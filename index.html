@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+    <title>CS</title>
+</head>
+
+<body>
+    <div class="dev-bar">
+        <div id="dev-bar-message"></div>
+        <div class="dev-btn-setwidth-group">
+            <div class="dev-btn-setwidth" id="btnSm">sm</div>
+            <div class="dev-btn-setwidth" id="btnMd">md</div>
+            <div class="dev-btn-setwidth" id="btnLg">lg</div>
+            <div class="dev-btn-setwidth" id="btnXl">xl</div>
+            <div class="dev-btn-setwidth" id="btnXxl">xxl</div>
+        </div>
+    </div>
+
+    <div class="window-simulator">
+
+            <div class="container">
+                <div class="vspacer-4"></div>
+                <div class="row-warning fs-5">
+                    We are currently very busy <span class="fw-bold">developing new resources</span> for our ministry!
+                    Please check this website in the coming months for future courses.
+                </div>
+
+                <div class="vspacer-4"></div>
+                <div class="fs-4 fst-italic"> Come & See presents</div>
+                <div class="vspacer-4"></div>
+                <div id="bt-title">The Bible Timeline Course</div>
+                <div class="vspacer-4"></div>
+                <div id="bt-subtitle">12 Periods, one Story!</div>
+                <div class="vspacer-4"></div>
+                <img src="img/BT-1200px.png" id="bt-chart">
+                <div class="vspacer-4"></div>
+                <div class="fs-4 fst-italic">Jeff Cavins’ worldwide-famous<br> Catholic Bible Study</div>
+                <div class="vspacer-5"></div>
+
+                <div class="fs-1"> Welcome, I am text fs-1</div>
+                <div class="fs-2"> Welcome, I am text fs-2</div>
+                <div class="fs-3"> Welcome, I am text fs-3</div>
+                <div class="fs-4"> Welcome, I am text fs-4</div>
+                <div class="fs-5"> Welcome, I am text fs-5</div>
+                <div class="fs-6"> Welcome, I am text fs-6</div>
+
+                <p> Normal Paragraph -Lorem ipsum dolor sit amet, consectetur adipiscing elit, incididuntt labore et
+                    dolore magna aliqua. Commodo viverra maecenas accumsan lacus. Duis at consectetur lorem donec massa
+                    sapien faucibus. Lacus sed viverra tellus in hac habitasse platea dictumst. Justo laoreet sit amet
+                    cursus.
+                </p>
+                <p> Normal Paragraph -Lorem ipsum dolor sit amet, consectetur adipiscing elit, incididuntt labore et
+                    dolore magna aliqua. Commodo viverra maecenas accumsan lacus. Duis at consectetur lorem donec massa
+                    sapien faucibus. Lacus sed viverra tellus in hac habitasse platea dictumst. Justo laoreet sit amet
+                    cursus.
+                </p>
+            </div>
+    </div> <!-- end window-simulator -->
+
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+
+        var windowSimulator = document.getElementsByClassName("window-simulator")[0];
+
+        var sm = 576;
+        var md = 768;
+        var lg = 992;
+        var xl = 1200
+        var xxl = 1400;
+
+        //Jquery UI | It makes the DIV resizable by dragging the right side (handles: 'e')
+        $(".window-simulator").resizable({
+            containment: 'parent',
+            handles: 'e'
+        });
+
+        $("#btnSm").click(function () { setWindowSimulatorWidth('small'); });
+        $("#btnMd").click(function () { setWindowSimulatorWidth('medium'); });
+        $("#btnLg").click(function () { setWindowSimulatorWidth('large'); });
+        $("#btnXl").click(function () { setWindowSimulatorWidth('x-large'); });
+        $("#btnXxl").click(function () { setWindowSimulatorWidth('xx-large'); });
+
+        function updateDevBar() {
+
+            var windowSimulatorWidth = windowSimulator.style.width;  //.offsetWidth;
+            //alert(windowSimulatorWidth);
+            windowSimulatorWidth = parseInt(windowSimulatorWidth.replace("px", ""));
+
+            var devBarMessageText;
+
+            $(".dev-btn-setwidth").removeClass("current");
+
+            if (windowSimulatorWidth < md) {
+                $("#btnSm").addClass("current");
+                devBarMessageText = "(" + sm + " <= sm < " + md + ")";
+            } else if (windowSimulatorWidth >= md && windowSimulatorWidth < lg) {
+                $("#btnMd").addClass("current");
+                devBarMessageText = "(" + md + " <= md < " + lg + ")";
+            } else if (windowSimulatorWidth >= lg && windowSimulatorWidth < xl) {
+                $("#btnLg").addClass("current");
+                devBarMessageText = "(" + lg + " <= lg < " + xl + ")";
+            } else if (windowSimulatorWidth >= xl && windowSimulatorWidth < xxl) {
+                $("#btnXl").addClass("current");
+                devBarMessageText = "(" + xl + " <= xl < " + xxl + ")";
+            } else if (windowSimulatorWidth >= xxl) {
+                $("#btnXxl").addClass("current");
+                devBarMessageText = "(" + xxl + " <= xxl)";
+            }
+
+            $("#dev-bar-message").html("<strong>" + windowSimulatorWidth + "</strong>" + "&nbsp;&nbsp;" + devBarMessageText);
+        }
+
+        function setWindowSimulatorWidth(size) {
+            switch (size) {
+                case "small":
+                    windowSimulator.style.width = sm + "px";
+                    break;
+                case "medium":
+                    windowSimulator.style.width = md + "px";
+                    break;
+                case "large":
+                    windowSimulator.style.width = lg + "px";
+                    break;
+                case "x-large":
+                    windowSimulator.style.width = xl + "px";
+                    break;
+                case "xx-large":
+                    windowSimulator.style.width = xxl + "px";
+                    break;
+            }
+        }
+
+        windowSimulator.style.width = xxl+200 + "px";
+
+        //ResizeObserver Javascript object
+        const resize_ob = new ResizeObserver(function (entries) {
+            updateDevBar();
+        });
+
+        //start observing for resize
+        resize_ob.observe(document.querySelector(".window-simulator"));
+
+        // Calling updateDevBar() for the first time
+        //updateDevBar();
+
+    });
+
+</script>
