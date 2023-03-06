@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+@import "_variables";
+@import "_buttons";
+
+@each $name, $color in $colors {
+	.cs-text-#{$name} {
+		color: #{$color};
+	}
+	.cs-bg-#{$name} {
+		background-color: #{$color};
+	}
+}
+
+/*-------GENERAL--------*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; //see: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+	font-family: "Poppins", sans-serif;
+}
+
+a {
+	font-weight: 600;
+	color: $black;
+}
+
+.cs-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.cs-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $black;
+	margin: auto;
+	padding: 2rem;
+
+	.cs-card-header {
+		font-size: 24px;
+		font-weight: 600;
+		letter-spacing: 1px;
+		margin-bottom: 40px;
+	}
+
+	.cs-card-body {
+		width: 100%;
+	}
+}

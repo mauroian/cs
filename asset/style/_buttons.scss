@@ -1,0 +1,15 @@
+@import "variables";
+
+@each $name, $color in $colors {
+	.cs-btn-#{$name} {
+		background-color: #{$color};
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		border-width: 0px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: darken($color, 5%);
+		}
+	}
+}

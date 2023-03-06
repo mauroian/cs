@@ -1,0 +1,38 @@
+@import "_variables";
+
+@each $type in $tbsexy {
+	$rem_current: 0;
+	$cont_max: 5;
+	$cont_current: 0;
+	@while $cont_current <= $cont_max {
+		.cas-m#{$type}-#{$cont_current} {
+			@if $type == "t" {
+				margin-top: $rem_current + rem !important;
+			} @else if $type == "b" {
+				margin-bottom: $rem_current + rem !important;
+			} @else if $type == "s" {
+				margin-left: $rem_current + rem !important;
+			} @else if $type == "e" {
+				margin-right: $rem_current + rem !important;
+			} @else if $type == "x" {
+				margin-left: $rem_current + rem !important;
+				margin-right: $rem_current + rem !important;
+			} @else if $type == "y" {
+				margin-top: $rem_current + rem !important;
+				margin-bottom: $rem_current + rem !important;
+			} @else {
+				margin: $rem_current + rem !important;
+			}
+		}
+
+		@if $cont_current == 0 {
+			$rem_current: 0.25;
+		} @else if $cont_current >= 4 {
+			$rem_current: $rem_current + 1;
+		} @else {
+			$rem_current: $rem_current * 2;
+		}
+
+		$cont_current: $cont_current + 1;
+	}
+}
