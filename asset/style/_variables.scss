@@ -7,6 +7,7 @@ $lightorange: #fecf4e;
 $red: #f33f00;
 $green: #2cbe00;
 $orange: #f1a201;
+$lightblue: #3898ec;
 
 $colors: (
 	"white": $white,
@@ -18,6 +19,7 @@ $colors: (
 	"red": $red,
 	"green": $green,
 	"orange": $orange,
+	"lightblue": $lightblue,
 );
 
 $tbsexy: "", "t", "b", "s", "e", "x", "y";
@@ -27,3 +29,5 @@ $device-sm: 768px;
 $device-md: 992px;
 $device-lg: 1200px;
 $device-xl: 1400px;
+
+$border_radius: 5px;

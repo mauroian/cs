@@ -4,7 +4,7 @@
 	.cs-btn-#{$name} {
 		background-color: #{$color};
 		padding: 0.5rem 1rem;
-		border-radius: 5px;
+		border-radius: $border_radius;
 		border-width: 0px;
 		cursor: pointer;
 

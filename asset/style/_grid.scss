@@ -41,3 +41,55 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+@for $i from 1 through 12 {
+	.cs-col-xs-#{$i},
+	.cs-col-sm-#{$i},
+	.cs-col-md-#{$i},
+	.cs-col-lg-#{$i},
+	.cs-col-xl-#{$i} {
+		box-sizing: border-box;
+		padding: 1em;
+		width: 100%;
+	}
+}
+
+@for $i from 1 through 12 {
+	.cs-col-xs-#{$i} {
+		@media (min-width: $device-xs) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.cs-col-sm-#{$i} {
+		@media (min-width: $device-sm) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.cs-col-md-#{$i} {
+		@media (min-width: $device-md) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.cs-col-lg-#{$i} {
+		@media (min-width: $device-lg) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.cs-col-xl-#{$i} {
+		@media (min-width: $device-xl) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
