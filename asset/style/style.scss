@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
 @import "_variables";
+@import "_margin";
+@import "_padding";
 @import "_buttons";
+@import "_grid";
 
 @each $name, $color in $colors {
 	.cs-text-#{$name} {
@@ -13,6 +16,10 @@
 }
 
 /*-------GENERAL--------*/
+:root {
+	font-size: 18px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -37,8 +44,11 @@ a {
 	align-items: center;
 	justify-content: center;
 	color: $black;
-	margin: auto;
 	padding: 2rem;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: $lightgray;
 
 	.cs-card-header {
 		font-size: 24px;

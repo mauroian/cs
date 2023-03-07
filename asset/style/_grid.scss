@@ -1,0 +1,43 @@
+@import "_variables";
+
+.cs-container {
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 0 1rem;
+
+	/* In _variables.scss
+	$device-xs: 576px;
+	$device-sm: 768px;
+	$device-md: 992px;
+	$device-lg: 1200px;
+	$device-xl: 1400px;
+    */
+
+	@media (min-width: $device-xs) {
+		max-width: 540px;
+	}
+
+	@media (min-width: $device-sm) {
+		max-width: 720px;
+	}
+
+	@media (min-width: $device-md) {
+		max-width: 960px;
+	}
+
+	@media (min-width: $device-lg) {
+		max-width: 1140px;
+	}
+
+	@media (min-width: $device-xl) {
+		max-width: 1320px;
+	}
+}
+
+.cs-row {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}

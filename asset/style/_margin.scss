@@ -5,23 +5,23 @@
 	$cont_max: 5;
 	$cont_current: 0;
 	@while $cont_current <= $cont_max {
-		.cas-m#{$type}-#{$cont_current} {
+		.cs-m#{$type}-#{$cont_current} {
 			@if $type == "t" {
-				margin-top: $rem_current + rem !important;
+				margin-top: $rem_current + rem;
 			} @else if $type == "b" {
-				margin-bottom: $rem_current + rem !important;
+				margin-bottom: $rem_current + rem;
 			} @else if $type == "s" {
-				margin-left: $rem_current + rem !important;
+				margin-left: $rem_current + rem;
 			} @else if $type == "e" {
-				margin-right: $rem_current + rem !important;
+				margin-right: $rem_current + rem;
 			} @else if $type == "x" {
-				margin-left: $rem_current + rem !important;
-				margin-right: $rem_current + rem !important;
+				margin-left: $rem_current + rem;
+				margin-right: $rem_current + rem;
 			} @else if $type == "y" {
-				margin-top: $rem_current + rem !important;
-				margin-bottom: $rem_current + rem !important;
+				margin-top: $rem_current + rem;
+				margin-bottom: $rem_current + rem;
 			} @else {
-				margin: $rem_current + rem !important;
+				margin: $rem_current + rem;
 			}
 		}
 
