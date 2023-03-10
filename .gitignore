@@ -1,2 +1,7 @@
 *.css
 *.css.map
+
+asset/style/old
+asset/bootstrap
+
+old_html

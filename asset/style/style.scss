@@ -1,102 +1,151 @@
-@import "_variables";
-@import "_margin";
-@import "_padding";
-@import "_grid";
-@import "_typography";
-@import "_buttons";
-
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-
-@each $name, $color in $colors {
-	.cs-text-#{$name} {
-		color: #{$color};
-	}
-	.cs-bg-#{$name} {
-		background-color: #{$color};
-	}
-
-	.cs-alert-#{$name} {
-		background-color: #{$color};
-		border-radius: 25px;
-		padding: 1rem 1.25rem;
-		display: flex;
-		align-items: center;
-
-		i {
-			font-size: 60px;
-			margin-right: 1rem;
-		}
-	}
+/* FONTS */
+@font-face {
+	font-family: "Poppins", sans-serif;
+	src: url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap")
+		format("truetype");
 }
+
+$font-main: "Poppins", sans-serif;
+
+/* COLORS */
+$primary: #0d6efd;
+$secondary: #6c757d;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+/*--*/
+$white: #ffffff;
+$lightgray: #d8d8d8;
+$gray: #b1b1b1;
+$darkgray: #666666;
+$black: #2c2c2c;
+$lightorange: #fecf4e;
+$red: #cf0000;
+$green: #00af50;
+$orange: #f1a201;
+$yellow: #ecc10a;
+$lightblue: #3898ec;
+/*--*/
+$easly_world: #00babe;
+$patriarchs: #680000;
+$egypt_exodus: #c80000;
+$desert_wandering: #e6bc7b;
+$conquest_judges: #00a653;
+$royal_kingdom: #75149c;
+$divided_kingdom: #000000;
+$exile: #5faafb;
+$return: #fff944;
+$maccabean_revolt: #ea5f00;
+$messicanic_fulfilment: #daa600;
+$the_church: #ffffff;
+
+/* OVERRIDE: colors*/
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"success": $success,
+	"info": $info,
+	"warning": $warning,
+	"danger": $danger,
+	"light": $light,
+	"dark": $dark,
+	"white": $white,
+	"lightgray": $lightgray,
+	"gray": $gray,
+	"darkgray": $darkgray,
+	"black": $black,
+	"lightorange": $lightorange,
+	"red": $red,
+	"green": $green,
+	"orange": $orange,
+	"yellow": $yellow,
+	"lightblue": $lightblue,
+	"easly_world": $easly_world,
+	"patriarchs": $patriarchs,
+	"egypt_exodus": $egypt_exodus,
+	"desert_wandering": $desert_wandering,
+	"conquest_judges": $conquest_judges,
+	"royal_kingdom": $royal_kingdom,
+	"divided_kingdom": $divided_kingdom,
+	"exile": $exile,
+	"return": $return,
+	"maccabean_revolt": $maccabean_revolt,
+	"messicanic_fulfilment": $messicanic_fulfilment,
+	"the_church": $the_church,
+);
+
+/* OVERRIDE: font */
+
+/* OVERRIDE: borders*/
+$border-radius: 5px;
+$border-radius-lg: 0px;
+$border-radius-sm: 0px;
+$modal-content-border-width: 1px;
+
+/* OVERRIDE: dropdowns */
+/*
+$dropdown-link-color: ;
+$dropdown-link-hover-color: ;
+$dropdown-link-hover-bg: ;
+$dropdown-item-padding-x: ;
+*/
+
+/* OVERRIDE: inputs */
+$input-group-addon-border-color: $primary;
+$form-file-button-color: $white;
+$form-file-button-bg: $primary;
+
+/* OVERRIDE: selects */
+$form-select-border-radius: 0px;
+$form-select-box-shadow: 0 0 0 2px $primary;
+$form-select-focus-border-color: $primary;
+$form-select-focus-box-shadow: 0 0 0 1px $primary;
+
+/* IMPORT: bootstrap */
+@import "../bootstrap/scss/bootstrap.scss";
 
 /*-------GENERAL--------*/
 :root {
+	font-family: $font-main;
 	font-size: 18px;
 }
 
 * {
+	font-family: $font-main;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box; //see: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
-	font-family: "Poppins", sans-serif;
 }
 
 a {
-	font-weight: 600;
-	color: $black;
-
 	&:hover {
-		color: $lightblue;
+		color: $lightblue !important;
 	}
 }
 
-input {
-	font-size: 18px;
+.text-shadow {
+	text-shadow: 1px 1px 6px rgb(0 0 0 / 58%);
 }
 
-.cs-input {
-	padding: 0.25rem 0.5rem;
-	width: 100%;
-	border-color: $gray;
-	border-radius: $border_radius;
-	border-style: solid;
-	border-width: 1px;
-
-	&:focus,
-	&:focus-visible {
-		color: $lightblue;
-		outline: none;
-		border-color: $lightblue;
-		border-width: 1px;
-	}
-}
-
-.cs-section {
+.home-badge-wrapper {
 	display: flex;
+	align-items: stretch;
 	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
+	flex-wrap: wrap;
 }
 
-.cs-card {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: $black;
-	padding: 2rem;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: $border_radius;
-	border-color: $lightgray;
-
-	.cs-card-header {
-		font-size: 30px;
-		font-weight: 500;
-		letter-spacing: 1px;
-		margin-bottom: 40px;
-	}
-
-	.cs-card-body {
-		width: 100%;
-	}
+.home-badge {
+	border-radius: 0.25rem;
+	color: $white;
+	font-weight: 700;
+	display: inline-block;
+	line-height: 1;
+	padding: 1rem;
+	text-align: center;
+	text-transform: uppercase;
+	vertical-align: middle;
+	white-space: nowrap;
 }
