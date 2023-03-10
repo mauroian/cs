@@ -29,7 +29,7 @@ $orange: #f1a201;
 $yellow: #ecc10a;
 $lightblue: #3898ec;
 /*--*/
-$easly_world: #00babe;
+$early_world: #00babe;
 $patriarchs: #680000;
 $egypt_exodus: #c80000;
 $desert_wandering: #e6bc7b;
@@ -63,7 +63,7 @@ $theme-colors: (
 	"orange": $orange,
 	"yellow": $yellow,
 	"lightblue": $lightblue,
-	"easly_world": $easly_world,
+	"early_world": $early_world,
 	"patriarchs": $patriarchs,
 	"egypt_exodus": $egypt_exodus,
 	"desert_wandering": $desert_wandering,
@@ -80,7 +80,7 @@ $theme-colors: (
 /* OVERRIDE: font */
 
 /* OVERRIDE: borders*/
-$border-radius: 5px;
+$border-radius: 25px;
 $border-radius-lg: 0px;
 $border-radius-sm: 0px;
 $modal-content-border-width: 1px;
@@ -130,6 +130,7 @@ a {
 	text-shadow: 1px 1px 6px rgb(0 0 0 / 58%);
 }
 
+/*
 .home-badge-wrapper {
 	display: flex;
 	align-items: stretch;
@@ -139,13 +140,23 @@ a {
 
 .home-badge {
 	border-radius: 0.25rem;
-	color: $white;
+	color: #ffffff;
 	font-weight: 700;
+	font-size: 37px;
 	display: inline-block;
 	line-height: 1;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	text-align: center;
 	text-transform: uppercase;
 	vertical-align: middle;
 	white-space: nowrap;
+
+	div {
+		transform: rotate(90deg);
+		i {
+			font-size: 35px;
+			font-weight: 800;
+		}
+	}
 }
+*/
