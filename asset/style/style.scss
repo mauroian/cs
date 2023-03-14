@@ -7,6 +7,12 @@
 
 $font-main: "Poppins", sans-serif;
 
+$sm: 540px;
+$md: 720px;
+$lg: 960px;
+$xl: 1140px;
+$xxl: 1320px;
+
 /* COLORS */
 $primary: #0d6efd;
 $secondary: #6c757d;
@@ -23,10 +29,11 @@ $gray: #b1b1b1;
 $darkgray: #666666;
 $black: #2c2c2c;
 $lightorange: #fecf4e;
-$red: #cf0000;
+$red: #b40000;
 $green: #00af50;
 $orange: #f1a201;
 $yellow: #ecc10a;
+$lightyellow: #ffec9a;
 $lightblue: #3898ec;
 /*--*/
 $early_world: #00babe;
@@ -62,6 +69,7 @@ $theme-colors: (
 	"green": $green,
 	"orange": $orange,
 	"yellow": $yellow,
+	"lightyellow": $lightyellow,
 	"lightblue": $lightblue,
 	"early_world": $early_world,
 	"patriarchs": $patriarchs,
@@ -81,17 +89,9 @@ $theme-colors: (
 
 /* OVERRIDE: borders*/
 $border-radius: 25px;
-$border-radius-lg: 0px;
-$border-radius-sm: 0px;
+$border-radius-lg: 25px;
+$border-radius-sm: 25px;
 $modal-content-border-width: 1px;
-
-/* OVERRIDE: dropdowns */
-/*
-$dropdown-link-color: ;
-$dropdown-link-hover-color: ;
-$dropdown-link-hover-bg: ;
-$dropdown-item-padding-x: ;
-*/
 
 /* OVERRIDE: inputs */
 $input-group-addon-border-color: $primary;
@@ -99,7 +99,7 @@ $form-file-button-color: $white;
 $form-file-button-bg: $primary;
 
 /* OVERRIDE: selects */
-$form-select-border-radius: 0px;
+$form-select-border-radius: 25px;
 $form-select-box-shadow: 0 0 0 2px $primary;
 $form-select-focus-border-color: $primary;
 $form-select-focus-box-shadow: 0 0 0 1px $primary;
@@ -120,6 +120,10 @@ $form-select-focus-box-shadow: 0 0 0 1px $primary;
 	box-sizing: border-box; //see: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 }
 
+body {
+	font-family: $font-main !important;
+}
+
 a {
 	&:hover {
 		color: $lightblue !important;
@@ -128,6 +132,23 @@ a {
 
 .text-shadow {
 	text-shadow: 1px 1px 6px rgb(0 0 0 / 58%);
+}
+
+.navbar-subtitle {
+	font-size: small;
+	font-weight: 700;
+}
+
+.bi-chevron-right::before {
+	margin-top: 5px;
+}
+.bi-youtube::before,
+.bi-person-circle::before {
+	margin-top: 7px;
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
 
 /*
@@ -160,3 +181,187 @@ a {
 	}
 }
 */
+
+/* SIDEBAR */
+.cs-left-sidebar {
+	flex-direction: column;
+	box-shadow: 10px 0 10px 0px #33333329;
+	z-index: 10;
+	position: relative;
+	min-width: fit-content;
+
+	button {
+		width: 100% !important;
+		text-align: left !important;
+		font-size: 16px;
+		border-radius: 0px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 1rem;
+		min-height: 50px;
+
+		p {
+			margin-bottom: 0px;
+		}
+	}
+
+	.cs-left-sidebar-logo {
+		display: flex;
+		align-items: center;
+		padding-left: 0.3rem;
+		font-size: 18px;
+
+		img {
+			width: 40px;
+			box-shadow: 0 1px 2px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+			border-radius: 50%;
+		}
+	}
+
+	@media (max-width: $md) {
+		button {
+			justify-content: center;
+			text-align: center !important;
+			padding: 0.5rem 0.75rem;
+
+			i {
+				padding: 0px !important;
+				margin: 0px !important;
+			}
+
+			p {
+				display: none;
+			}
+		}
+		.cs-left-sidebar-logo {
+			text-align: center !important;
+			padding: 0.25rem;
+
+			img {
+				margin: 0px !important;
+			}
+		}
+	}
+
+	&:hover {
+		button {
+			justify-content: flex-start;
+			text-align: left;
+
+			i {
+				padding: 0px !important;
+				margin-right: 0.5rem !important;
+			}
+
+			p {
+				display: block;
+			}
+		}
+		.cs-left-sidebar-logo {
+			img {
+				margin-right: 0.25rem !important;
+			}
+		}
+	}
+}
+
+/* NAVBAR */
+
+.navbar-top {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.navbar {
+	padding-top: 1rem;
+	padding-bottom: 5px;
+	@media (min-width: $lg) {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+}
+
+.btn-join {
+	&:hover {
+		color: $white !important;
+	}
+}
+.btn-login {
+	&:hover {
+		color: $black !important;
+		background-color: $lightgray;
+	}
+}
+
+.navbar-social-icon {
+	text-decoration: none;
+
+	&:hover {
+		color: $darkgray !important;
+	}
+}
+
+.navbar-toggler {
+	border-width: 0px;
+
+	&:focus {
+		box-shadow: 0 0 0 0px;
+	}
+
+	span {
+		background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(1,1,1, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/></svg>");
+	}
+}
+
+.dropdown-menu {
+	background-color: $lightyellow;
+	border-radius: 0px;
+
+	@media (max-width: $md) {
+		border-width: 0px;
+	}
+}
+
+.dropdown-item,
+.nav-link {
+	color: $black !important;
+
+	&:hover {
+		color: $black !important;
+		background-color: lighten($yellow, 10);
+	}
+}
+
+.nav-item {
+	.nav-link {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	ul {
+		.dropdown {
+			padding: 0px;
+
+			.nav-link {
+				padding: 0.25rem 1rem;
+			}
+		}
+	}
+
+	a {
+		.badge {
+			background-color: darken($yellow, 10%);
+			font-size: 10px;
+		}
+	}
+}
+
+.navbar-expand-md .navbar-collapse {
+	justify-content: center;
+}
+
+.navbar-nav {
+	flex-wrap: wrap;
+	justify-content: center;
+}
