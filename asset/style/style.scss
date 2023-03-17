@@ -1,8 +1,39 @@
 /* FONTS */
+
 @font-face {
-	font-family: "Poppins", sans-serif;
-	src: url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap")
-		format("truetype");
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Regular.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Italic.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Italic.woff") format("woff");
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Bold.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-BoldItalic.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-BoldItalic.woff") format("woff");
+	font-weight: 700;
+	font-style: italic;
 }
 
 $font-main: "Poppins", sans-serif;
@@ -35,6 +66,7 @@ $orange: #f1a201;
 $yellow: #ecc10a;
 $lightyellow: #ffec9a;
 $lightblue: #3898ec;
+$darkblue: #003180;
 /*--*/
 $early_world: #00babe;
 $patriarchs: #680000;
@@ -71,6 +103,7 @@ $theme-colors: (
 	"yellow": $yellow,
 	"lightyellow": $lightyellow,
 	"lightblue": $lightblue,
+	"darkblue": $darkblue,
 	"early_world": $early_world,
 	"patriarchs": $patriarchs,
 	"egypt_exodus": $egypt_exodus,
@@ -87,11 +120,16 @@ $theme-colors: (
 
 /* OVERRIDE: font */
 
-/* OVERRIDE: borders*/
-$border-radius: 25px;
-$border-radius-lg: 25px;
-$border-radius-sm: 25px;
+/* OVERRIDE: borders */
+$border-radius: 15px;
+$border-radius-lg: 15px;
+$border-radius-sm: 15px;
 $modal-content-border-width: 1px;
+
+/* OVERRIDE: buttons */
+$btn-border-radius: 10px;
+$btn-border-radius-sm: 10px;
+$btn-border-radius-lg: 10px;
 
 /* OVERRIDE: inputs */
 $input-group-addon-border-color: $primary;
@@ -201,6 +239,11 @@ a {
 		padding-left: 1rem;
 		min-height: 50px;
 
+		&:focus,
+		&:active {
+			box-shadow: 0 0 0 0rem !important;
+		}
+
 		p {
 			margin-bottom: 0px;
 		}
@@ -219,7 +262,15 @@ a {
 		}
 	}
 
-	@media (max-width: $md) {
+	.sub-menu {
+		padding-left: 1.5rem;
+	}
+
+	.sub-sub-menu {
+		padding-left: 2.5rem;
+	}
+
+	@media (max-width: 768px) {
 		button {
 			justify-content: center;
 			text-align: center !important;
@@ -233,6 +284,10 @@ a {
 			p {
 				display: none;
 			}
+
+			.bi-chevron-down {
+				display: none;
+			}
 		}
 		.cs-left-sidebar-logo {
 			text-align: center !important;
@@ -242,9 +297,16 @@ a {
 				margin: 0px !important;
 			}
 		}
+		.sub-menu {
+			padding-left: 0.75rem;
+		}
+
+		.sub-sub-menu {
+			padding-left: 0.75rem;
+		}
 	}
 
-	&:hover {
+	&.cs-show {
 		button {
 			justify-content: flex-start;
 			text-align: left;
@@ -257,11 +319,24 @@ a {
 			p {
 				display: block;
 			}
+
+			.bi-chevron-down {
+				margin-left: 0.25rem !important;
+				display: block;
+			}
 		}
 		.cs-left-sidebar-logo {
 			img {
 				margin-right: 0.25rem !important;
 			}
+		}
+
+		.sub-menu {
+			padding-left: 1.5rem;
+		}
+
+		.sub-sub-menu {
+			padding-left: 2.5rem;
 		}
 	}
 }
@@ -274,12 +349,18 @@ a {
 }
 
 .navbar {
-	padding-top: 1rem;
-	padding-bottom: 5px;
-	@media (min-width: $lg) {
-		padding-top: 0px;
-		padding-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	/*max width manual definition*/
+	@media (max-width: 768px) {
+		padding-top: 1rem;
+		padding-bottom: 5px;
 	}
+}
+
+.dropdown-menu[data-bs-popper] {
+	margin-top: 0rem !important; /*override bootstrap*/
+	top: auto;
 }
 
 .btn-join {
@@ -287,11 +368,17 @@ a {
 		color: $white !important;
 	}
 }
+
 .btn-login {
 	&:hover {
 		color: $black !important;
 		background-color: $lightgray;
+		border-color: $lightgray;
 	}
+}
+
+.btn-5px {
+	border-radius: 5px;
 }
 
 .navbar-social-icon {
@@ -303,7 +390,8 @@ a {
 }
 
 .navbar-toggler {
-	border-width: 0px;
+	border-width: 2px;
+	border-color: $white;
 
 	&:focus {
 		box-shadow: 0 0 0 0px;
@@ -314,12 +402,31 @@ a {
 	}
 }
 
+.cs-hamburger-open {
+	border-style: solid;
+	border-color: $lightgray;
+	border-radius: 5px;
+}
+
 .dropdown-menu {
 	background-color: $lightyellow;
 	border-radius: 0px;
 
 	@media (max-width: $md) {
 		border-width: 0px;
+
+		li {
+			a {
+				padding-left: 1.5rem !important;
+			}
+			ul {
+				li {
+					a {
+						padding-left: 3rem !important;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -354,6 +461,14 @@ a {
 			background-color: darken($yellow, 10%);
 			font-size: 10px;
 		}
+	}
+}
+
+.cs-nav-link {
+	padding-top: 0.65rem;
+
+	@media (max-width: $md) {
+		padding-top: 0.5rem;
 	}
 }
 
