@@ -1,2 +1,5 @@
 *.css
 *.css.map
+
+asset/bootstrap
+asset/font
