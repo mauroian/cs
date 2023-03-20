@@ -270,41 +270,6 @@ a {
 		padding-left: 2.5rem;
 	}
 
-	@media (max-width: 768px) {
-		button {
-			justify-content: center;
-			padding: 0.5rem 0.75rem;
-
-			i {
-				padding: 0px !important;
-				margin: 0px !important;
-			}
-
-			p {
-				display: none;
-			}
-
-			.bi-chevron-down {
-				display: none;
-			}
-		}
-		.cs-left-sidebar-logo {
-			text-align: center !important;
-			padding: 0.25rem;
-
-			img {
-				margin: 0px !important;
-			}
-		}
-		.sub-menu {
-			padding-left: 0.75rem;
-		}
-
-		.sub-sub-menu {
-			padding-left: 0.75rem;
-		}
-	}
-
 	&.cs-show {
 		button {
 			justify-content: flex-start;
@@ -336,6 +301,41 @@ a {
 
 		.sub-sub-menu {
 			padding-left: 2.5rem;
+		}
+	}
+
+	&.cs-hide {
+		button {
+			justify-content: center;
+			padding: 0.5rem 0.75rem;
+
+			i {
+				padding: 0px !important;
+				margin: 0px !important;
+			}
+
+			p {
+				display: none;
+			}
+
+			.bi-chevron-down {
+				display: none;
+			}
+		}
+		.cs-left-sidebar-logo {
+			text-align: center !important;
+			padding: 0.25rem;
+
+			img {
+				margin: 0px !important;
+			}
+		}
+		.sub-menu {
+			padding-left: 0.75rem;
+		}
+
+		.sub-sub-menu {
+			padding-left: 0.75rem;
 		}
 	}
 }
