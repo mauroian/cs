@@ -1,21 +1,98 @@
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Regular.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Italic.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-Bold.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: local("Poppins");
+	src: url("../font/Poppins/Poppins-BoldItalic.woff2") format("woff2");
+	src: url("../font/Poppins/Poppins-BoldItalic.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fira Sans";
+	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2") format("woff2"),
+		url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fira Sans";
+	src: url("../font/Fira Sans/FiraSans-Italic.woff2") format("woff2"),
+		url("../font/Fira Sans/FiraSans-Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fira Sans";
+	src: url("../font/Fira Sans/FiraSans-Bold.woff2") format("woff2"),
+		url("../font/Fira Sans/FiraSans-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fira Sans";
+	src: url("../font/Fira Sans/FiraSans-BoldItalic.woff2") format("woff2"),
+		url("../font/Fira Sans/FiraSans-BoldItalic.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
 @import "_variables";
 @import "_margin";
 @import "_padding";
+@import "_vspacers";
 @import "_grid";
 @import "_typography";
 @import "_buttons";
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-
-@each $name, $color in $colors {
-	.cs-text-#{$name} {
+@each $name,
+$color in $colors {
+	.#{$class-prefix}text-#{$name} {
 		color: #{$color};
 	}
-	.cs-bg-#{$name} {
+
+	.#{$class-prefix}bg-#{$name} {
 		background-color: #{$color};
 	}
 
-	.cs-alert-#{$name} {
+	.#{$class-prefix}alert-#{$name} {
 		background-color: #{$color};
 		border-radius: 25px;
 		padding: 1rem 1.25rem;
@@ -39,14 +116,61 @@
 	padding: 0;
 	box-sizing: border-box; //see: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 	font-family: "Poppins", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	//border: 1px solid black;
 }
 
-a {
-	font-weight: 600;
-	color: $black;
 
-	&:hover {
-		color: $lightblue;
+.#{$class-prefix}navbar-wrapper {
+	width: 100%;
+	height: 70px;
+	background-color: $lightorange;
+}
+
+.#{$class-prefix}admin-top-navbar-wrapper {
+	width: 100%;
+	height: 70px;
+	background-color: $darkblue;
+}
+
+.#{$class-prefix}admin-side-navbar-wrapper {
+	width: 150px;
+	height: 100vh;
+	background-color: $darkblue;
+}
+
+
+
+.#{$class-prefix}section {
+	width: 100%;
+	//display: flex;
+	//justify-content: center;
+	//min-height: 100vh;
+	//background-color:aliceblue;
+}
+
+
+.#{$class-prefix}card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $black;
+	padding: 2rem;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: $border_radius;
+	border-color: $lightgray;
+
+	.#{$class-prefix}card-title {
+		font-size: 30px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		margin-bottom: 40px;
+	}
+
+	.#{$class-prefix}card-body {
+		width: 100%;
 	}
 }
 
@@ -54,7 +178,7 @@ input {
 	font-size: 18px;
 }
 
-.cs-input {
+.#{$class-prefix}input {
 	padding: 0.25rem 0.5rem;
 	width: 100%;
 	border-color: $gray;
@@ -71,32 +195,128 @@ input {
 	}
 }
 
-.cs-section {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
+
+
+
+
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	//font-weight: 500;
+	line-height: 1.2;
 }
 
-.cs-card {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+h1,
+.h1 {
+	font-size: calc(1.375rem + 1.5vw);
+}
+
+@media (min-width: 1200px) {
+
+	h1,
+	.h1 {
+		font-size: 2.5rem;
+	}
+}
+
+h2,
+.h2 {
+	font-size: calc(1.325rem + 0.9vw);
+}
+
+@media (min-width: 1200px) {
+
+	h2,
+	.h2 {
+		font-size: 2rem;
+	}
+}
+
+h3,
+.h3 {
+	font-size: calc(1.3rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+
+	h3,
+	.h3 {
+		font-size: 1.75rem;
+	}
+}
+
+h4,
+.h4 {
+	font-size: calc(1.275rem + 0.3vw);
+}
+
+@media (min-width: 1200px) {
+
+	h4,
+	.h4 {
+		font-size: 1.5rem;
+	}
+}
+
+h5,
+.h5 {
+	font-size: 1.25rem;
+}
+
+h6,
+.h6 {
+	font-size: 1rem;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 1rem; //0rem;
+}
+
+a {
+	color: $blue;
+	text-decoration: underline;
+	&:hover {
+		color: $lightblue;
+	}
+}
+
+.#{$class-prefix}card a {
 	color: $black;
-	padding: 2rem;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: $border_radius;
-	border-color: $lightgray;
-
-	.cs-card-header {
-		font-size: 30px;
-		font-weight: 500;
-		letter-spacing: 1px;
-		margin-bottom: 40px;
+	text-decoration: underline;
+	&:hover {
+		color: $gray;
 	}
+}
 
-	.cs-card-body {
-		width: 100%;
-	}
+.#{$class-prefix}text-center {
+	text-align: center;
+}
+
+.#{$class-prefix}text-left {
+	text-align: left;
+}
+
+.#{$class-prefix}fst-italic {
+	font-style: italic !important;
+}
+
+.#{$class-prefix}fst-normal {
+	font-style: normal !important;
+}
+
+.#{$class-prefix}fw-bold {
+	font-weight: 700 !important;
 }

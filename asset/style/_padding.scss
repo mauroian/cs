@@ -5,7 +5,7 @@
 	$cont_max: 5;
 	$cont_current: 0;
 	@while $cont_current <= $cont_max {
-		.cs-p#{$type}-#{$cont_current} {
+		.#{$class-prefix}p#{$type}-#{$cont_current} {
 			@if $type == "t" {
 				padding-top: $rem_current + rem;
 			} @else if $type == "b" {

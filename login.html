@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login</title>
-		<link rel="stylesheet" href="asset/style/style.css" />
-	</head>
-	<body>
-		<section class="cs-section">
-			<div class="cs-container">
-				<div class="cs-row">
-					<div class="cs-col-xs-12 cs-col-sm-8 cs-col-md-6">
-						<div class="cs-card">
-							<div class="cs-card-body">
-								<p class="cs-card-header">Login form</p>
-								<form action="">
-									<div class="cs-mb-4">
-										<p class="cs-mb-1">Your Email</p>
-										<input
-											class="cs-input cs-mb-1"
-											type="text"
-											name=""
-											id=""
-											placeholder="Email"
-											autofocus
-										/>
-										<p><a href="#">Forgot email?</a></p>
-									</div>
 
-									<div class="cs-mb-4">
-										<p class="cs-mb-1">Your Password</p>
-										<input
-											class="cs-input cs-mb-1"
-											type="password"
-											name=""
-											id=""
-											placeholder="Password"
-											autofocus
-										/>
-										<p><a href="#">Reset password?</a></p>
-									</div>
-									<input
-										class="cs-btn-green cs-text-white"
-										type="submit"
-										value="Log in"
-									/>
-								</form>
-							</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login</title>
+	<link rel="stylesheet" href="asset/style/style.css" />
+
+	<style>
+		/*
+		[class^=cs-containe] {
+			border: 1px solid red;
+		}
+
+		[class^=cs-row] {
+			border: 1px solid blue;
+		}
+
+		[class^=cs-col] {
+			border: 1px solid green;
+		}
+		*/
+	</style>
+
+</head>
+
+<body>
+	<div class="cs-navbar-wrapper"></div>
+
+	<section class="cs-section">
+		<div class="cs-container">
+			<div class="cs-row cs-mt-5">
+				<div class="cs-bg-lightyellow cs-col-12 cs-col-sm-12 cs-col-md-8 cs-col-xl-6">
+					<div class="cs-card cs-mt-0">
+						<div class="cs-card-body">
+							<form action="">
+								<div class="cs-mb-4">
+									<p class="cs-mb-1 cs-fw-bold">Your Email</p>
+									<input class="cs-input  cs-mb-1" type="text" name="" id="" placeholder="Email"
+										autofocus />
+									<p><a href="#">Forgot email?</a></p>
+								</div>
+
+								<div class="cs-mb-4">
+									<p class="cs-mb-1 cs-fw-bold">Your Password</p>
+									<input class="cs-input cs-mb-1" type="password" name="" id="" placeholder="Password"
+										autofocus />
+									<p><a href="#">Reset password?</a></p>
+								</div>
+								<div class="cs-text-center">
+									<input class="cs-btn-darkgreen cs-text-white" type="submit" value="Log in" />
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-	</body>
+		</div>
+	</section>
+</body>
+
 </html>

@@ -1,13 +1,19 @@
+$class-prefix: cs-;        
+
 $white: #ffffff;
 $lightgray: #d8d8d8;
 $gray: #b1b1b1;
 $darkgray: #666666;
 $black: #2c2c2c;
+$orange: #f1a201;
 $lightorange: #fecf4e;
+$lightyellow: #fffeef;
 $red: #f33f00;
 $green: #2cbe00;
-$orange: #f1a201;
-$lightblue: #3898ec;
+$darkgreen: #198754;
+$blue:  #0d6efd;
+$darkblue:#003180;
+$lightblue: #8bc1f0;
 
 $colors: (
 	"white": $white,
@@ -15,19 +21,31 @@ $colors: (
 	"gray": $gray,
 	"darkgray": $darkgray,
 	"black": $black,
+	"orange": $orange,
 	"lightorange": $lightorange,
+	"lightyellow": $lightyellow,
 	"red": $red,
 	"green": $green,
-	"orange": $orange,
+	"darkgreen": $darkgreen,
+	"blue": $blue,
+	"darkblue": $darkblue,
 	"lightblue": $lightblue,
 );
 
 $tbsexy: "", "t", "b", "s", "e", "x", "y";
 
-$device-xs: 576px;
-$device-sm: 768px;
-$device-md: 992px;
-$device-lg: 1200px;
-$device-xl: 1400px;
+$device-sm: 576px;
+$device-md: 768px;
+$device-lg: 992px;
+$device-xl: 1200px;
+$device-xxl: 1400px;
+
+$container-max-width-sm: 540px;
+$container-max-width-md: 720px;
+$container-max-width-lg: 960px;
+$container-max-width-xl: 1140px;
+$container-max-width-xxl: 1320px;
 
 $border_radius: 5px;
+
+

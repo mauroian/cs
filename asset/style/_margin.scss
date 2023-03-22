@@ -5,7 +5,7 @@
 	$cont_max: 5;
 	$cont_current: 0;
 	@while $cont_current <= $cont_max {
-		.cs-m#{$type}-#{$cont_current} {
+		.#{$class-prefix}m#{$type}-#{$cont_current} {
 			@if $type == "t" {
 				margin-top: $rem_current + rem;
 			} @else if $type == "b" {
@@ -36,3 +36,13 @@
 		$cont_current: $cont_current + 1;
 	}
 }
+
+.#{$class-prefix}mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+} 
+
+.#{$class-prefix}my-auto {
+	margin-top: auto;
+	margin-bottom: auto;	
+} 

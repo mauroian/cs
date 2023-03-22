@@ -1,69 +1,104 @@
 @import "_variables";
 
-.cs-container {
-	width: 100%;
+.#{$class-prefix}container,
+.#{$class-prefix}container-fluid,
+.#{$class-prefix}container-xxl,
+.#{$class-prefix}container-xl,
+.#{$class-prefix}container-lg,
+.#{$class-prefix}container-md,
+.#{$class-prefix}container-sm {
 	box-sizing: border-box;
-	margin: 0 auto;
-	padding: 0 1rem;
+	margin: 0 auto;  //top-bottom | right-left
+	padding: 0 1rem; 
 
-	/* In _variables.scss
-	$device-xs: 576px;
-	$device-sm: 768px;
-	$device-md: 992px;
-	$device-lg: 1200px;
-	$device-xl: 1400px;
-    */
+	/* extra-small */
+	width: 100%;
+}
 
-	@media (min-width: $device-xs) {
-		max-width: 540px;
-	}
+/* small */
+@media (min-width: $device-sm) {
 
-	@media (min-width: $device-sm) {
-		max-width: 720px;
-	}
-
-	@media (min-width: $device-md) {
-		max-width: 960px;
-	}
-
-	@media (min-width: $device-lg) {
-		max-width: 1140px;
-	}
-
-	@media (min-width: $device-xl) {
-		max-width: 1320px;
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-sm};
 	}
 }
 
-.cs-row {
+/* medium */
+@media (min-width: $device-md) {
+
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-md};
+	}
+}
+
+/* large */
+@media (min-width: $device-lg) {
+
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-lg};
+	}
+
+}
+
+/* extra-large */
+@media (min-width: $device-xl) {
+
+	.#{$class-prefix}container-xl,
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-xl};
+	}
+
+}
+
+/* extra-extra-large */
+@media (min-width: $device-xxl) {
+
+	.#{$class-prefix}container-xxl,
+	.#{$class-prefix}container-xl,
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-xxl};
+	}
+}
+
+
+.#{$class-prefix}row {
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
+.#{$class-prefix}col,
+.#{$class-prefix}col-sm,
+.#{$class-prefix}col-md,
+.#{$class-prefix}col-lg,
+.#{$class-prefix}col-xl,
+.#{$class-prefix}col-xxl {
+	box-sizing: border-box;
+	padding: 0px;  //cambiato da 1em che non mi piace
+	width: 100%;
+}
+
 @for $i from 1 through 12 {
-	.cs-col-xs-#{$i},
-	.cs-col-sm-#{$i},
-	.cs-col-md-#{$i},
-	.cs-col-lg-#{$i},
-	.cs-col-xl-#{$i} {
-		box-sizing: border-box;
-		padding: 1em;
-		width: 100%;
+	.#{$class-prefix}col-#{$i} {
+		width: calc(100% * (#{$i} / 12));
 	}
 }
 
 @for $i from 1 through 12 {
-	.cs-col-xs-#{$i} {
-		@media (min-width: $device-xs) {
-			width: calc(100% * (#{$i} / 12));
-		}
-	}
-}
-
-@for $i from 1 through 12 {
-	.cs-col-sm-#{$i} {
+	.#{$class-prefix}col-sm-#{$i} {
 		@media (min-width: $device-sm) {
 			width: calc(100% * (#{$i} / 12));
 		}
@@ -71,7 +106,7 @@
 }
 
 @for $i from 1 through 12 {
-	.cs-col-md-#{$i} {
+	.#{$class-prefix}col-md-#{$i} {
 		@media (min-width: $device-md) {
 			width: calc(100% * (#{$i} / 12));
 		}
@@ -79,7 +114,7 @@
 }
 
 @for $i from 1 through 12 {
-	.cs-col-lg-#{$i} {
+	.#{$class-prefix}col-lg-#{$i} {
 		@media (min-width: $device-lg) {
 			width: calc(100% * (#{$i} / 12));
 		}
@@ -87,9 +122,19 @@
 }
 
 @for $i from 1 through 12 {
-	.cs-col-xl-#{$i} {
+	.#{$class-prefix}col-xl-#{$i} {
 		@media (min-width: $device-xl) {
 			width: calc(100% * (#{$i} / 12));
 		}
 	}
 }
+
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-xxl-#{$i} {
+		@media (min-width: $device-xxl) {
+			width: calc(100% * (#{$i} / 12));
+		}
+	}
+}
+
+
