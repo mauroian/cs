@@ -1,4 +1,4 @@
-$class-prefix: cs-;        
+$class-prefix: cs-;
 
 $white: #ffffff;
 $lightgray: #d8d8d8;
@@ -11,8 +11,8 @@ $lightyellow: #fffeef;
 $red: #f33f00;
 $green: #2cbe00;
 $darkgreen: #198754;
-$blue:  #0d6efd;
-$darkblue:#003180;
+$blue: #0d6efd;
+$darkblue: #003180;
 $lightblue: #8bc1f0;
 
 $colors: (
@@ -40,6 +40,14 @@ $device-lg: 992px;
 $device-xl: 1200px;
 $device-xxl: 1400px;
 
+$breakpoints: (
+	"sm": $device-sm,
+	"md": $device-md,
+	"lg": $device-lg,
+	"xl": $device-xl,
+	"xxl": $device-xxl,
+);
+
 $container-max-width-sm: 540px;
 $container-max-width-md: 720px;
 $container-max-width-lg: 960px;
@@ -47,5 +55,3 @@ $container-max-width-xl: 1140px;
 $container-max-width-xxl: 1320px;
 
 $border_radius: 5px;
-
-
