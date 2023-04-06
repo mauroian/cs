@@ -27,29 +27,33 @@
 </head>
 
 <body>
-	<div class="cs-navbar-wrapper"></div>
+	<div class="cs-navbar-wrapper cs-d-flex">
+		<div><a href="/login.html">Login</a></div>
+		<div><a href="/personal_page.html">Personal page</a></div>
+		<div><a href="/test.html">Test</a></div>
+	</div>
 
 	<section class="cs-section">
 		<div class="cs-container">
-			<div class="cs-row cs-mt-5">
-				<div class="cs-bg-lightyellow cs-col-12 cs-col-sm-12 cs-col-md-8 cs-col-xl-6">
-					<div class="cs-card cs-mt-0">
+			<div class="cs-row">
+				<div class="cs-col-12 cs-col-sm-12 cs-col-md-8 cs-col-xl-6">
+					<div class="cs-card cs-bg-lightyellow cs-mt-5">
 						<div class="cs-card-body">
 							<form action="">
-								<div class="cs-mb-4">
-									<p class="cs-mb-1 cs-fw-bold">Your Email</p>
-									<input class="cs-input  cs-mb-1" type="text" name="" id="" placeholder="Email"
+								<div class="">
+									<div class="cs-fw-bold">Your Email</div>
+									<input class="cs-input  cs-mt-1" type="text" name="" id="" placeholder="Email"
 										autofocus />
-									<p><a href="#">Forgot email?</a></p>
+									<div class="cs-mt-2"><a href="#">Forgot email?</a></div>
 								</div>
 
-								<div class="cs-mb-4">
-									<p class="cs-mb-1 cs-fw-bold">Your Password</p>
-									<input class="cs-input cs-mb-1" type="password" name="" id="" placeholder="Password"
+								<div class="cs-mt-4">
+									<div class="cs-mb-1 cs-fw-bold">Your Password</div>
+									<input class="cs-input cs-mt-1" type="password" name="" id="" placeholder="Password"
 										autofocus />
-									<p><a href="#">Reset password?</a></p>
+									<div class="cs-mt-2"><a href="#">Reset password?</a></div>
 								</div>
-								<div class="cs-text-center">
+								<div class="cs-text-center cs-mt-4">
 									<input class="cs-btn-darkgreen cs-text-white" type="submit" value="Log in" />
 								</div>
 							</form>

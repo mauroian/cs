@@ -40,8 +40,7 @@
 
 @font-face {
 	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2")
-			format("woff2"),
+	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2") format("woff2"),
 		url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
@@ -83,7 +82,8 @@
 @import "_typography";
 @import "_buttons";
 
-@each $name, $color in $colors {
+@each $name,
+$color in $colors {
 	.#{$class-prefix}text-#{$name} {
 		color: #{$color};
 	}
@@ -106,6 +106,30 @@
 	}
 }
 
+.#{$class-prefix}text-center {
+	text-align: center;
+}
+
+.#{$class-prefix}text-left {
+	text-align: left;
+}
+
+.#{$class-prefix}fst-italic {
+	font-style: italic !important;
+}
+
+.#{$class-prefix}fst-normal {
+	font-style: normal !important;
+}
+
+.#{$class-prefix}fw-bold {
+	font-weight: 700 !important;
+}
+
+.#{$class-prefix}fw-bold {
+	font-weight: 700 !important;
+}
+
 .#{$class-prefix}d-none {
 	display: none !important;
 }
@@ -118,14 +142,17 @@
 	display: flex !important;
 }
 
-@each $breakpoint, $value in $breakpoints {
+@each $breakpoint,
+$value in $breakpoints {
 	@media (min-width: $value) {
 		.#{$class-prefix}d-#{$breakpoint}-none {
 			display: none !important;
 		}
+
 		.#{$class-prefix}d-#{$breakpoint}-block {
 			display: block !important;
 		}
+
 		.#{$class-prefix}d-#{$breakpoint}-flex {
 			display: flex !important;
 		}
@@ -149,9 +176,25 @@
 
 .#{$class-prefix}navbar-wrapper {
 	width: 100%;
-	height: 70px;
+	height: 50px;
 	background-color: $lightorange;
+	justify-content: center;
+	align-items: center;
 }
+
+.#{$class-prefix}navbar-wrapper>div {
+	margin: 30px;
+}
+
+.#{$class-prefix}navbar-wrapper a {
+	text-decoration: none;
+	color: black;
+
+	&:hover {
+		color: gray;
+	}
+}
+
 
 .#{$class-prefix}admin-top-navbar-wrapper {
 	width: 100%;
@@ -230,8 +273,7 @@ h2,
 h1,
 .h1 {
 	margin-top: 0;
-	margin-bottom: 0.5rem;
-	//font-weight: 500;
+	margin-bottom: 0;
 	line-height: 1.2;
 }
 
@@ -241,6 +283,7 @@ h1,
 }
 
 @media (min-width: 1200px) {
+
 	h1,
 	.h1 {
 		font-size: 2.5rem;
@@ -253,6 +296,7 @@ h2,
 }
 
 @media (min-width: 1200px) {
+
 	h2,
 	.h2 {
 		font-size: 2rem;
@@ -265,6 +309,7 @@ h3,
 }
 
 @media (min-width: 1200px) {
+
 	h3,
 	.h3 {
 		font-size: 1.75rem;
@@ -277,6 +322,7 @@ h4,
 }
 
 @media (min-width: 1200px) {
+
 	h4,
 	.h4 {
 		font-size: 1.5rem;
@@ -294,13 +340,14 @@ h6,
 }
 
 p {
-	margin-top: 0;
-	margin-bottom: 1rem; //0rem;
+	margin-top: 0.75rem;
+	margin-bottom: 0;
 }
 
 a {
 	color: $blue;
 	text-decoration: underline;
+
 	&:hover {
 		color: $lightblue;
 	}
@@ -309,27 +356,59 @@ a {
 .#{$class-prefix}card a {
 	color: $black;
 	text-decoration: underline;
+
 	&:hover {
 		color: $gray;
 	}
 }
 
-.#{$class-prefix}text-center {
-	text-align: center;
+
+
+
+/* DEBUG CLASSES */
+
+.b-black {
+	border: 1px solid black;
 }
 
-.#{$class-prefix}text-left {
-	text-align: left;
+.b-blue {
+	border: 1px solid blue;
 }
 
-.#{$class-prefix}fst-italic {
-	font-style: italic !important;
+.b-green {
+	border: 1px solid green;
 }
 
-.#{$class-prefix}fst-normal {
-	font-style: normal !important;
+.b-red {
+	border: 1px solid red;
 }
 
-.#{$class-prefix}fw-bold {
-	font-weight: 700 !important;
+.b-orange {
+	border: 1px solid orange;
 }
+
+.b-acqua {
+	border: 1px solid aqua;
+}
+
+.b-magenta {
+	border: 1px solid magenta;
+}
+
+.debug {
+	.cs-section {
+		@extend .b-black
+	}
+	.cs-container {
+		@extend .b-black
+	}
+	.cs-rowx {
+		@extend .b-blue
+	}
+	[class*="cs-col"] {
+		@extend .b-red
+	}
+	
+}
+
+/* END DEBUG CLASSES */
