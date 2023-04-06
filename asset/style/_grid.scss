@@ -8,8 +8,8 @@
 .#{$class-prefix}container-md,
 .#{$class-prefix}container-sm {
 	box-sizing: border-box;
-	margin: 0 auto;  //top-bottom | right-left
-	padding: 0 1rem; 
+	margin: 0 auto; //top-bottom | right-left
+	padding: 0 1rem;
 
 	/* extra-small */
 	width: 100%;
@@ -17,7 +17,6 @@
 
 /* small */
 @media (min-width: $device-sm) {
-
 	.#{$class-prefix}container-sm,
 	.#{$class-prefix}container {
 		max-width: #{$container-max-width-sm};
@@ -26,7 +25,6 @@
 
 /* medium */
 @media (min-width: $device-md) {
-
 	.#{$class-prefix}container-md,
 	.#{$class-prefix}container-sm,
 	.#{$class-prefix}container {
@@ -36,19 +34,16 @@
 
 /* large */
 @media (min-width: $device-lg) {
-
 	.#{$class-prefix}container-lg,
 	.#{$class-prefix}container-md,
 	.#{$class-prefix}container-sm,
 	.#{$class-prefix}container {
 		max-width: #{$container-max-width-lg};
 	}
-
 }
 
 /* extra-large */
 @media (min-width: $device-xl) {
-
 	.#{$class-prefix}container-xl,
 	.#{$class-prefix}container-lg,
 	.#{$class-prefix}container-md,
@@ -56,12 +51,10 @@
 	.#{$class-prefix}container {
 		max-width: #{$container-max-width-xl};
 	}
-
 }
 
 /* extra-extra-large */
 @media (min-width: $device-xxl) {
-
 	.#{$class-prefix}container-xxl,
 	.#{$class-prefix}container-xl,
 	.#{$class-prefix}container-lg,
@@ -71,7 +64,6 @@
 		max-width: #{$container-max-width-xxl};
 	}
 }
-
 
 .#{$class-prefix}row {
 	box-sizing: border-box;
@@ -87,7 +79,7 @@
 .#{$class-prefix}col-xl,
 .#{$class-prefix}col-xxl {
 	box-sizing: border-box;
-	padding: 0px;  //cambiato da 1em che non mi piace
+	padding: 0px; //cambiato da 1em che non mi piace
 	width: 100%;
 }
 
@@ -136,5 +128,3 @@
 		}
 	}
 }
-
-
