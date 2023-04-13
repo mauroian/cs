@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bar</title>
+		<link rel="stylesheet" href="asset/style/style.css" />
+	</head>
+	<body>
+		<div class="cs-d-flex cs-page-wrapper">
+			<!--LEFT SIDE-->
+			<div id="cs-sidebar-parent-md" class="cs-sidebar-parent-md">
+				<div id="cs-sidebar" class="cs-sidebar cs-d-none">
+					<button class="" onclick="window.location.href='personal_page.html';">
+						<img class="" src="asset/img/logo.png" alt="Come & See logo" />
+						<p>Come & See</p>
+					</button>
+					<button class="" onclick="window.location.href='personal_page.html';">
+						<p>Users</p>
+					</button>
+					<button class="" onclick="window.location.href='events.html';">
+						<p>Events</p>
+					</button>
+					<button class="" onclick="window.location.href='personal_page.html';">
+						<p>Membership</p>
+					</button>
+				</div>
+			</div>
+			<!--RIGHT SIDE-->
+			<div class="w-100">
+				<div id="cs-sidebar-parent" class="cs-sidebar-parent">
+					<div id="cs-topbar" class="cs-topbar">
+						<button class="cs-hamburger-btn" onclick="toggleSidebar();">
+							<div class="cs-hamburger"></div>
+							<div class="cs-hamburger"></div>
+							<div class="cs-hamburger"></div>
+						</button>
+					</div>
+				</div>
+				<div class="cs-right-content-wrapper">
+					<div class="cs-card cs-align-start cs-m-3">
+						<div class="cs-card-title">Create New Event</div>
+						<div class="cs-card-body">
+							<div class="cs-row">
+								<div class="cs-col-3 cs-col-lg-2">
+									<p class="cs-fw-bold">Code:</p>
+								</div>
+								<div class="cs-col-9 cs-col-lg-10">
+									<input type="text" class="w-100" />
+								</div>
+							</div>
+						</div>
+						<div class="cs-card-footer">
+							<button class="cs-btn-green cs-text-white">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			/* Dichiarazione costanti */
+			const sidebar = document.getElementById("cs-sidebar");
+			const sidebar_parent = document.getElementById("cs-sidebar-parent");
+			const sidebar_parent_md = document.getElementById("cs-sidebar-parent-md");
+
+			/* Al caricamento della pagina */
+			document.addEventListener("DOMContentLoaded", () => {
+				barStyleManager();
+			});
+
+			/* Al resize della pagina */
+			onresize = (event) => {
+				barStyleManager();
+			};
+
+			/* Gestisce la posizione della sidebar a seconda della dimensione dello schermo */
+			const barStyleManager = function () {
+				// If page width < md
+				if (window.innerWidth < 768) {
+					// switch #cs-sidebar parent
+					sidebar_parent.appendChild(sidebar);
+				} else {
+					// switch #cs-sidebar parent
+					sidebar_parent_md.appendChild(sidebar);
+				}
+			};
+
+			/* Gestisce lo show/hide del menu */
+			const toggleSidebar = function () {
+				if (sidebar.classList.contains("cs-d-none")) {
+					sidebar.classList.remove("cs-d-none");
+				} else {
+					sidebar.classList.add("cs-d-none");
+				}
+			};
+		</script>
+	</body>
+</html>
