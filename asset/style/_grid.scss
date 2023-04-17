@@ -8,11 +8,9 @@
 .#{$class-prefix}container-md,
 .#{$class-prefix}container-sm {
 	box-sizing: border-box;
-	margin: 0 auto; //top-bottom | right-left
+	margin: 0 auto; // top-bottom | right-left
 	padding: 0 1rem;
-
-	/* extra-small */
-	width: 100%;
+	width: 100%; 	/* extra-small */
 }
 
 /* small */
@@ -72,83 +70,52 @@
 	justify-content: center;
 }
 
-// Fo 1 0 0%;r mobile first it would be like in Bootstrap (the columns would be stacked):
-// .#{$class-prefix}row > * {
-//		flex-shrink: 0;
-//		width: 100%;
-//		max-width: 100%;
-//	}
-
-
-/* Since we adopt desktop first: */
+/* For mobile-first (like in Bootstrap) the columns would be stacked by default and we should write:
 .#{$class-prefix}row > * {
-	flex: 1 0 0%;  /* columns next to each other and equal */
-	/* note: in CSS, the default for flex is: flex: 0 1 auto; */
-}
-
-/* This makes sure that each time I set a col- class, the flex property is set back to its default (otherwise the col- classes (which I define below) would not work!)*/
-//[class^=cs-col] {
-	//flex: 0 1 auto; /* flex default value */
-//}
-
-/* 
-.#{$class-prefix}col,
-.#{$class-prefix}col-sm,
-.#{$class-prefix}col-md,
-.#{$class-prefix}col-lg,
-.#{$class-prefix}col-xl,
-.#{$class-prefix}col-xxl {
-	box-sizing: border-box;
-	padding: 0px; //cambiato da 1em che non mi piace
+	flex-shrink: 0;
 	width: 100%;
+	max-width: 100%;
 }
 */
+
+/* Since we adopt desktop-first: */
+.#{$class-prefix}row > * {
+	flex: 1 0 0%;  /* columns next to each other and equal */
+	/* note: because of the above setting, in each col-n class below, I must set the flex property back 
+	to its default value (otherwise it would not work), which is:  flex: 0 1 auto; */
+}
 
 /* col- classes */
 .#{$class-prefix}col {
 	flex: 1 0 0%;  /* columns next to each other and equal */
-}
-.#{$class-prefix}col-0 {
-	display:none;
-	flex: 0 1 auto; /* flex default value */
+	box-sizing: border-box;
+	padding: 0px;
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-#{$i} {
 		width: calc(100% * (#{$i} / 12));
-		flex: 0 1 auto; /* flex default value */
-		display: unset;
+		flex: 0 1 auto; /* flex back to its default value */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
-}
-.#{$class-prefix}col-block{
-	width:100%;
-	flex: 0 1 auto; /* flex default value */ 
-	display: unset;
 }
 
 /* col-sm- classes */
 @media (min-width: $device-sm) {
 	.#{$class-prefix}col-sm {
 		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
-}
-.#{$class-prefix}col-sm-0 {
-	display:none;
-	flex: 0 1 auto; /* flex default value */
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-sm-#{$i} {
 		@media (min-width: $device-sm) {
 			width: calc(100% * (#{$i} / 12));
-			flex: 0 1 auto; /* flex default value */
-			display: unset;
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
 		}
-	}
-}
-.#{$class-prefix}col-sm-block{
-	@media (min-width: $device-sm) {
-		width:100%;
-		flex: 0 1 auto; /* flex default value */
-		display: unset;
 	}
 }
 
@@ -156,20 +123,18 @@
 @media (min-width: $device-md) {
 	.#{$class-prefix}col-md {
 		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-md-#{$i} {
 		@media (min-width: $device-md) {
 			width: calc(100% * (#{$i} / 12));
-			flex: 0 1 auto; /* flex default value */
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
 		}
-	}
-}
-.#{$class-prefix}col-md-block{
-	@media (min-width: $device-md) {
-		width:100%;
-		flex: 0 1 auto; /* flex default value */
 	}
 }
 
@@ -177,20 +142,18 @@
 @media (min-width: $device-lg) {
 	.#{$class-prefix}col-lg {
 		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-lg-#{$i} {
 		@media (min-width: $device-lg) {
 			width: calc(100% * (#{$i} / 12));
-			flex: 0 1 auto; /* flex default value */
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
 		}
-	}
-}
-.#{$class-prefix}col-lg-block{
-	@media (min-width: $device-lg) {
-		width:100%;
-		flex: 0 1 auto; /* flex default value */
 	}
 }
 
@@ -198,20 +161,18 @@
 @media (min-width: $device-xl) {
 	.#{$class-prefix}col-xl {
 		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-xl-#{$i} {
 		@media (min-width: $device-xl) {
 			width: calc(100% * (#{$i} / 12));
-			flex: 0 1 auto; /* flex default value */
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
 		}
-	}
-}
-.#{$class-prefix}col-xl-block{
-	@media (min-width: $device-xl) {
-		width:100%;
-		flex: 0 1 auto; /* flex default value */
 	}
 }
 
@@ -219,19 +180,17 @@
 @media (min-width: $device-xxl) {
 	.#{$class-prefix}col-xxl {
 		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
 	}
 }
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-xxl-#{$i} {
 		@media (min-width: $device-xxl) {
 			width: calc(100% * (#{$i} / 12));
-			flex: 0 1 auto; /* flex default value */
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
 		}
-	}
-}
-.#{$class-prefix}col-xxl-block{
-	@media (min-width: $device-xxl) {
-		width:100%;
-		flex: 0 1 auto; /* flex default value */
 	}
 }

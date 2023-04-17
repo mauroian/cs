@@ -146,6 +146,10 @@
 	display: inline-block !important;
 }
 
+.#{$class-prefix}d-inline {
+	display: inline !important;
+}
+
 @each $breakpoint,
 $value in $breakpoints {
 	@media (min-width: $value) {
@@ -163,6 +167,10 @@ $value in $breakpoints {
 
 		.#{$class-prefix}d-inline-block-#{$breakpoint} {
 			display: inline-block !important;
+		}
+
+		.#{$class-prefix}d-inline-#{$breakpoint} {
+			display: inline !important;
 		}
 	}
 }
@@ -184,6 +192,15 @@ $value in $breakpoints {
 
 .w-100 {
 	width: 100%;
+}
+.w-75 {
+	width: 75%;
+}
+.w-50 {
+	width: 50%;
+}
+.w-25 {
+	width: 25%;
 }
 
 .#{$class-prefix}navbar-wrapper {
@@ -221,10 +238,6 @@ $value in $breakpoints {
 
 .#{$class-prefix}section {
 	width: 100%;
-	//display: flex;
-	//justify-content: center;
-	//min-height: 100vh;
-	//background-color:aliceblue;
 }
 
 .#{$class-prefix}card {
@@ -428,7 +441,7 @@ a {
 		@extend .b-black;
 	}
 	.cs-container {
-		@extend .b-black;
+		@extend .b-magenta;
 	}
 	.cs-rowx {
 		@extend .b-blue;
