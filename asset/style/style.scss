@@ -40,8 +40,7 @@
 
 @font-face {
 	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2")
-			format("woff2"),
+	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2") format("woff2"),
 		url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
@@ -76,10 +75,10 @@
 }
 
 @import "_variables";
+@import "_grid";
 @import "_margin";
 @import "_padding";
 @import "_vspacers";
-@import "_grid";
 @import "_typography";
 @import "_buttons";
 
@@ -142,7 +141,13 @@
 	display: flex !important;
 }
 
-@each $breakpoint, $value in $breakpoints {
+
+.#{$class-prefix}d-inline-block {
+	display: inline-block !important;
+}
+
+@each $breakpoint,
+$value in $breakpoints {
 	@media (min-width: $value) {
 		.#{$class-prefix}d-none-#{$breakpoint} {
 			display: none !important;
@@ -154,6 +159,10 @@
 
 		.#{$class-prefix}d-flex-#{$breakpoint} {
 			display: flex !important;
+		}
+
+		.#{$class-prefix}d-inline-block-#{$breakpoint} {
+			display: inline-block !important;
 		}
 	}
 }

@@ -72,6 +72,26 @@
 	justify-content: center;
 }
 
+// Fo 1 0 0%;r mobile first it would be like in Bootstrap (the columns would be stacked):
+// .#{$class-prefix}row > * {
+//		flex-shrink: 0;
+//		width: 100%;
+//		max-width: 100%;
+//	}
+
+
+/* Since we adopt desktop first: */
+.#{$class-prefix}row > * {
+	flex: 1 0 0%;  /* columns next to each other and equal */
+	/* note: in CSS, the default for flex is: flex: 0 1 auto; */
+}
+
+/* This makes sure that each time I set a col- class, the flex property is set back to its default (otherwise the col- classes (which I define below) would not work!)*/
+//[class^=cs-col] {
+	//flex: 0 1 auto; /* flex default value */
+//}
+
+/* 
 .#{$class-prefix}col,
 .#{$class-prefix}col-sm,
 .#{$class-prefix}col-md,
@@ -82,49 +102,136 @@
 	padding: 0px; //cambiato da 1em che non mi piace
 	width: 100%;
 }
+*/
 
+/* col- classes */
+.#{$class-prefix}col {
+	flex: 1 0 0%;  /* columns next to each other and equal */
+}
+.#{$class-prefix}col-0 {
+	display:none;
+	flex: 0 1 auto; /* flex default value */
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-#{$i} {
 		width: calc(100% * (#{$i} / 12));
+		flex: 0 1 auto; /* flex default value */
+		display: unset;
 	}
 }
+.#{$class-prefix}col-block{
+	width:100%;
+	flex: 0 1 auto; /* flex default value */ 
+	display: unset;
+}
 
+/* col-sm- classes */
+@media (min-width: $device-sm) {
+	.#{$class-prefix}col-sm {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+	}
+}
+.#{$class-prefix}col-sm-0 {
+	display:none;
+	flex: 0 1 auto; /* flex default value */
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-sm-#{$i} {
 		@media (min-width: $device-sm) {
 			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex default value */
+			display: unset;
 		}
 	}
 }
+.#{$class-prefix}col-sm-block{
+	@media (min-width: $device-sm) {
+		width:100%;
+		flex: 0 1 auto; /* flex default value */
+		display: unset;
+	}
+}
 
+/* col-md- classes */
+@media (min-width: $device-md) {
+	.#{$class-prefix}col-md {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+	}
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-md-#{$i} {
 		@media (min-width: $device-md) {
 			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex default value */
 		}
 	}
 }
+.#{$class-prefix}col-md-block{
+	@media (min-width: $device-md) {
+		width:100%;
+		flex: 0 1 auto; /* flex default value */
+	}
+}
 
+/* col-lg- classes */
+@media (min-width: $device-lg) {
+	.#{$class-prefix}col-lg {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+	}
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-lg-#{$i} {
 		@media (min-width: $device-lg) {
 			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex default value */
 		}
 	}
 }
+.#{$class-prefix}col-lg-block{
+	@media (min-width: $device-lg) {
+		width:100%;
+		flex: 0 1 auto; /* flex default value */
+	}
+}
 
+/* col-xl- classes */
+@media (min-width: $device-xl) {
+	.#{$class-prefix}col-xl {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+	}
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-xl-#{$i} {
 		@media (min-width: $device-xl) {
 			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex default value */
 		}
 	}
 }
+.#{$class-prefix}col-xl-block{
+	@media (min-width: $device-xl) {
+		width:100%;
+		flex: 0 1 auto; /* flex default value */
+	}
+}
 
+/* col-xxl- classes */
+@media (min-width: $device-xxl) {
+	.#{$class-prefix}col-xxl {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+	}
+}
 @for $i from 1 through 12 {
 	.#{$class-prefix}col-xxl-#{$i} {
 		@media (min-width: $device-xxl) {
 			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex default value */
 		}
+	}
+}
+.#{$class-prefix}col-xxl-block{
+	@media (min-width: $device-xxl) {
+		width:100%;
+		flex: 0 1 auto; /* flex default value */
 	}
 }
