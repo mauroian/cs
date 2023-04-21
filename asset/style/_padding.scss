@@ -7,21 +7,21 @@
 	@while $cont_current <= $cont_max {
 		.#{$class-prefix}p#{$type}-#{$cont_current} {
 			@if $type == "t" {
-				padding-top: $rem_current + rem;
+				padding-top: $rem_current + rem !important;
 			} @else if $type == "b" {
-				padding-bottom: $rem_current + rem;
+				padding-bottom: $rem_current + rem !important;
 			} @else if $type == "s" {
-				padding-left: $rem_current + rem;
+				padding-left: $rem_current + rem !important;
 			} @else if $type == "e" {
-				padding-right: $rem_current + rem;
+				padding-right: $rem_current + rem !important;
 			} @else if $type == "x" {
-				padding-left: $rem_current + rem;
-				padding-right: $rem_current + rem;
+				padding-left: $rem_current + rem !important;
+				padding-right: $rem_current + rem !important;
 			} @else if $type == "y" {
-				padding-top: $rem_current + rem;
-				padding-bottom: $rem_current + rem;
+				padding-top: $rem_current + rem !important;
+				padding-bottom: $rem_current + rem !important;
 			} @else {
-				padding: $rem_current + rem;
+				padding: $rem_current + rem !important;
 			}
 		}
 

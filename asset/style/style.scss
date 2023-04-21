@@ -40,7 +40,8 @@
 
 @font-face {
 	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2") format("woff2"),
+	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2")
+			format("woff2"),
 		url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
@@ -141,7 +142,6 @@
 	display: flex !important;
 }
 
-
 .#{$class-prefix}d-inline-block {
 	display: inline-block !important;
 }
@@ -150,8 +150,7 @@
 	display: inline !important;
 }
 
-@each $breakpoint,
-$value in $breakpoints {
+@each $breakpoint, $value in $breakpoints {
 	@media (min-width: $value) {
 		.#{$class-prefix}d-none-#{$breakpoint} {
 			display: none !important;
@@ -250,35 +249,58 @@ $value in $breakpoints {
 	border-style: solid;
 	border-radius: $border_radius;
 	border-color: $lightgray;
+}
 
-	.#{$class-prefix}card-title {
-		font-size: 20px;
-		font-weight: 500;
-		margin-bottom: 0.5rem;
-		border-bottom: 1px;
-		border-bottom-style: solid;
-		border-bottom-color: $lightgray;
-		width: 100%;
-		padding: 0.5rem 2rem;
-	}
+.#{$class-prefix}card-header {
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: $lightgray;
+	width: 100%;
+	padding: 0.5rem 2rem;
+}
 
-	.#{$class-prefix}card-body {
-		width: 100%;
-		padding: 2rem;
-	}
+.#{$class-prefix}card-body {
+	width: 100%;
+	padding: 2rem;
+}
 
-	.#{$class-prefix}card-footer {
-		margin-top: 0.5rem;
-		border-top: 1px;
-		border-top-style: solid;
-		border-top-color: $lightgray;
-		width: 100%;
-		padding: 0.5rem 2rem;
-	}
+.#{$class-prefix}card-footer {
+	margin-top: 0.5rem;
+	border-top: 1px;
+	border-top-style: solid;
+	border-top-color: $lightgray;
+	width: 100%;
+	padding: 0.5rem 2rem;
 }
 
 input {
 	font-size: 18px;
+	padding: 0.25rem 0.5rem;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $darkgray;
+	border-radius: 5px;
+
+	&:focus-visible {
+		outline: 0px;
+	}
+}
+
+textarea {
+	font-size: 18px;
+	padding: 0.25rem 0.5rem;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $darkgray;
+	border-radius: 5px;
+	resize: vertical;
+
+	&:focus-visible {
+		outline: 0px;
+	}
 }
 
 .#{$class-prefix}input {
@@ -388,13 +410,23 @@ a {
 }
 
 .cs-align-start {
-	align-items: left !important;
+	align-items: flex-start !important;
 }
 .cs-align-center {
 	align-items: center !important;
 }
 .cs-align-end {
-	align-items: right !important;
+	align-items: flex-end !important;
+}
+
+.cs-justify-content-start {
+	justify-content: flex-start !important;
+}
+.cs-justify-content-center {
+	justify-content: center !important;
+}
+.cs-justify-content-end {
+	justify-content: flex-end !important;
 }
 
 .#{$class-prefix}card a {
@@ -462,10 +494,24 @@ a {
 	color: $white;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: space-between;
 
 	@media (min-width: $device-md) {
 		justify-content: flex-start;
+	}
+}
+.cs-topbar-logo {
+	background-color: $darkblue;
+	border: 0px;
+	padding: 0.4rem 1rem;
+	cursor: pointer;
+
+	&:hover {
+		background-color: lighten($darkblue, 5);
+	}
+
+	img {
+		width: 2rem;
 	}
 }
 .cs-hamburger-btn {
@@ -498,6 +544,12 @@ a {
 	min-height: 4rem;
 	background: $darkblue;
 	color: $white;
+	min-width: 200px;
+
+	@media (max-width: $device-md) {
+		position: absolute;
+		width: 100%;
+	}
 
 	button {
 		width: 100%;
@@ -518,7 +570,6 @@ a {
 
 		img {
 			width: 2rem;
-			padding-right: 0.5rem;
 		}
 
 		p {
@@ -527,9 +578,70 @@ a {
 			white-space: nowrap;
 		}
 	}
+
+	.cs-sidebar-l2-btn {
+		padding-left: 2rem;
+	}
+
+	.cs-sidebar-l3-btn {
+		padding-left: 3rem;
+	}
+
+	.cs-sidebar-logo {
+		padding-top: 0.4rem;
+		padding-bottom: 0.4rem;
+	}
 }
 
 .cs-right-content-wrapper {
 	overflow-y: auto;
 	height: calc(100vh - 51px); // 51px is topbar height
+}
+
+/* ANIMATIONS */
+
+.scale-in-ver-top {
+	-webkit-animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+		both;
+	animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.scale-in-ver-top-reverse {
+	-webkit-animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+		reverse both;
+	animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse
+		both;
+}
+
+@-webkit-keyframes scale-in-ver-top {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		-webkit-transform-origin: 100% 0%;
+		transform-origin: 100% 0%;
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		-webkit-transform-origin: 100% 0%;
+		transform-origin: 100% 0%;
+		opacity: 1;
+	}
+}
+@keyframes scale-in-ver-top {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		-webkit-transform-origin: 100% 0%;
+		transform-origin: 100% 0%;
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		-webkit-transform-origin: 100% 0%;
+		transform-origin: 100% 0%;
+		opacity: 1;
+	}
 }

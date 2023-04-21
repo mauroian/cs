@@ -6,182 +6,163 @@ $font-size: 10;
 $default: 18;
 
 @while $font-size <=70 {
-    .#{$class-prefix}text-#{$font-size} {
-        font-size: $font-size + px;
+	.#{$class-prefix}text-#{$font-size} {
+		font-size: $font-size + px !important;
 
-        @media (max-width: $device-lg) {
-            @if ($font-size > 50) {
-                font-size: 50px;
-            }
+		@media (max-width: $device-lg) {
+			@if ($font-size > 50) {
+				font-size: 50px !important;
+			} @else if ($font-size >=30) {
+				font-size: 40px !important;
+			} @else {
+				font-size: $font-size + px !important;
+			}
+		}
 
-            @else if ($font-size >=30) {
-                font-size: 40px;
-            }
+		@media (max-width: $device-md) {
+			@if ($font-size > 50) {
+				font-size: 35px !important;
+			} @else if ($font-size >=30) {
+				font-size: 30px !important;
+			} @else {
+				font-size: $default + px !important;
+			}
+		}
 
-            @else {
-                font-size: $font-size + px;
-            }
-        }
+		@media (max-width: $device-sm) {
+			font-size: $default + px !important;
+		}
+	}
 
-        @media (max-width: $device-md) {
-            @if ($font-size > 50) {
-                font-size: 35px;
-            }
-
-            @else if ($font-size >=30) {
-                font-size: 30px;
-            }
-
-            @else {
-                font-size: $default + px;
-            }
-        }
-
-        @media (max-width: $device-sm) {
-            font-size: $default + px;
-        }
-    }
-
-    $font-size: $font-size + 10;
+	$font-size: $font-size + 10;
 }
-
 
 /* typography with Bootstrap-like formulas (only, 1 is smallest, 2 is larger etc) */
 
 $cnt: 1;
 
 @while $cnt <=6 {
-    
-    $size: 1rem;
+	$size: 1rem;
 
-    @if ($cnt ==2) {
-        $size: 1.25rem;
-    }
+	@if ($cnt ==2) {
+		$size: 1.25rem;
+	} @else if ($cnt ==3) {
+		$size: 1.275rem;
+	} @else if ($cnt ==4) {
+		$size: 1.3rem;
+	} @else if ($cnt ==5) {
+		$size: 1.325rem;
+	} @else if ($cnt ==6) {
+		$size: 1.375rem;
+	}
 
-    @else if ($cnt ==3) {
-        $size: 1.275rem;
-    }
+	.#{$class-prefix}fs-#{$cnt} {
+		font-size: calc($size + 1.5vw) !important;
+	}
 
-    @else if ($cnt ==4) {
-        $size: 1.3rem;
-    }
-
-    @else if ($cnt ==5) {
-        $size: 1.325rem;
-    }
-
-    @else if ($cnt ==6) {
-        $size: 1.375rem;
-    }
-
-    .#{$class-prefix}fs-#{$cnt} {
-        font-size: calc($size + 1.5vw) !important;
-    }
-
-    $cnt: $cnt + 1;
+	$cnt: $cnt + 1;
 }
 
 /*Typography Mauro (valori a mano) */
 
 .#{$class-prefix}txt-6 {
-    font-size: 80px;
+	font-size: 80px !important;
 }
 
 .#{$class-prefix}txt-5 {
-    font-size: 45px;
+	font-size: 45px !important;
 }
 
 .#{$class-prefix}txt-4 {
-    font-size: 30px;
+	font-size: 30px !important;
 }
 
 .#{$class-prefix}txt-3 {
-    font-size: 26px;
+	font-size: 26px !important;
 }
 
 .#{$class-prefix}txt-2 {
-    font-size: 22px;
+	font-size: 22px !important;
 }
 
 .#{$class-prefix}txt-1 {
-    font-size: 18px;
+	font-size: 18px !important;
 }
 
 @media (max-width: #{$device-lg}) {
-    .#{$class-prefix}txt-6 {
-        font-size: 60px;
-    }
+	.#{$class-prefix}txt-6 {
+		font-size: 60px !important;
+	}
 
-    .#{$class-prefix}txt-5 {
-        font-size: 35px;
-    }
+	.#{$class-prefix}txt-5 {
+		font-size: 35px !important;
+	}
 
-    .#{$class-prefix}txt-4 {
-        font-size: 25px;
-    }
+	.#{$class-prefix}txt-4 {
+		font-size: 25px !important;
+	}
 
-    .#{$class-prefix}txt-3 {
-        font-size: 22px;
-    }
+	.#{$class-prefix}txt-3 {
+		font-size: 22px !important;
+	}
 
-    .#{$class-prefix}txt-2 {
-        font-size: 20px;
-    }
+	.#{$class-prefix}txt-2 {
+		font-size: 20px !important;
+	}
 
-    .#{$class-prefix}txt-1 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-1 {
+		font-size: 18px !important;
+	}
 }
 
 @media (max-width: #{$device-md}) {
-    .#{$class-prefix}txt-6 {
-        font-size: 40px;
-    }
+	.#{$class-prefix}txt-6 {
+		font-size: 40px !important;
+	}
 
-    .#{$class-prefix}txt-5 {
-        font-size: 25px;
-    }
+	.#{$class-prefix}txt-5 {
+		font-size: 25px !important;
+	}
 
-    .#{$class-prefix}txt-4 {
-        font-size: 20px;
-    }
+	.#{$class-prefix}txt-4 {
+		font-size: 20px !important;
+	}
 
-    .#{$class-prefix}txt-3 {
-        font-size: 20px;
-    }
+	.#{$class-prefix}txt-3 {
+		font-size: 20px !important;
+	}
 
-    .#{$class-prefix}txt-2 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-2 {
+		font-size: 18px !important;
+	}
 
-    .#{$class-prefix}txt-1 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-1 {
+		font-size: 18px !important;
+	}
 }
 
 @media (max-width: #{$device-sm}) {
+	.#{$class-prefix}txt-6 {
+		font-size: 25px !important;
+	}
 
-    .#{$class-prefix}txt-6 {
-        font-size: 25px;
-    }
+	.#{$class-prefix}txt-5 {
+		font-size: 22px !important;
+	}
 
-    .#{$class-prefix}txt-5 {
-        font-size: 22px;
-    }
+	.#{$class-prefix}txt-4 {
+		font-size: 18px !important;
+	}
 
-    .#{$class-prefix}txt-4 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-3 {
+		font-size: 18px !important;
+	}
 
-    .#{$class-prefix}txt-3 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-2 {
+		font-size: 18px !important;
+	}
 
-    .#{$class-prefix}txt-2 {
-        font-size: 18px;
-    }
-
-    .#{$class-prefix}txt-1 {
-        font-size: 18px;
-    }
+	.#{$class-prefix}txt-1 {
+		font-size: 18px !important;
+	}
 }

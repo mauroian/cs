@@ -7,21 +7,21 @@
 	@while $cont_current <= $cont_max {
 		.#{$class-prefix}m#{$type}-#{$cont_current} {
 			@if $type == "t" {
-				margin-top: $rem_current + rem;
+				margin-top: $rem_current + rem !important;
 			} @else if $type == "b" {
-				margin-bottom: $rem_current + rem;
+				margin-bottom: $rem_current + rem !important;
 			} @else if $type == "s" {
-				margin-left: $rem_current + rem;
+				margin-left: $rem_current + rem !important;
 			} @else if $type == "e" {
-				margin-right: $rem_current + rem;
+				margin-right: $rem_current + rem !important;
 			} @else if $type == "x" {
-				margin-left: $rem_current + rem;
-				margin-right: $rem_current + rem;
+				margin-left: $rem_current + rem !important;
+				margin-right: $rem_current + rem !important;
 			} @else if $type == "y" {
-				margin-top: $rem_current + rem;
-				margin-bottom: $rem_current + rem;
+				margin-top: $rem_current + rem !important;
+				margin-bottom: $rem_current + rem !important;
 			} @else {
-				margin: $rem_current + rem;
+				margin: $rem_current + rem !important;
 			}
 		}
 
@@ -38,11 +38,11 @@
 }
 
 .#{$class-prefix}mx-auto {
-	margin-left: auto;
-	margin-right: auto;
-} 
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
 
 .#{$class-prefix}my-auto {
-	margin-top: auto;
-	margin-bottom: auto;	
-} 
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
