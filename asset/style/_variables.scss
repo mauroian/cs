@@ -5,10 +5,12 @@ $lightgray: #d8d8d8;
 $gray: #b1b1b1;
 $darkgray: #666666;
 $black: #2c2c2c;
+$yellow: #ecc10a;
+$lightyellow: #ffec9a;
 $orange: #f1a201;
 $lightorange: #fecf4e;
-$lightyellow: #fffeef;
 $red: #f33f00;
+$darkred: #b40000;
 $green: #2cbe00;
 $darkgreen: #198754;
 $blue: #0d6efd;
@@ -21,10 +23,12 @@ $colors: (
 	"gray": $gray,
 	"darkgray": $darkgray,
 	"black": $black,
+	"yellow": $yellow,
 	"orange": $orange,
 	"lightorange": $lightorange,
 	"lightyellow": $lightyellow,
 	"red": $red,
+	"darkred": $darkred,
 	"green": $green,
 	"darkgreen": $darkgreen,
 	"blue": $blue,
@@ -55,3 +59,4 @@ $container-max-width-xl: 1140px;
 $container-max-width-xxl: 1320px;
 
 $border_radius: 5px;
+$btn_border_radius: 0px;

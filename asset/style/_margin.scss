@@ -37,12 +37,24 @@
 	}
 }
 
-.#{$class-prefix}mx-auto {
-	margin-left: auto !important;
-	margin-right: auto !important;
-}
-
-.#{$class-prefix}my-auto {
-	margin-top: auto !important;
-	margin-bottom: auto !important;
+@each $type in $tbsexy {
+	.#{$class-prefix}m#{$type}-auto {
+		@if $type == "t" {
+			margin-top: auto !important;
+		} @else if $type == "b" {
+			margin-bottom: auto !important;
+		} @else if $type == "s" {
+			margin-left: auto !important;
+		} @else if $type == "e" {
+			margin-right: auto !important;
+		} @else if $type == "x" {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		} @else if $type == "y" {
+			margin-top: auto !important;
+			margin-bottom: auto !important;
+		} @else {
+			margin: auto !important;
+		}
+	}
 }

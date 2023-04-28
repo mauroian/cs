@@ -16,7 +16,7 @@
 		<div class="cs-d-flex cs-page-wrapper">
 			<!--LEFT SIDE-->
 			<div id="cs-sidebar-parent-md" class="cs-sidebar-parent-md">
-				<div id="cs-sidebar" class="cs-sidebar cs-d-none">
+				<div id="cs-sidebar" class="cs-sidebar cs-d-none cs-pb-2">
 					<button
 						class="cs-sidebar-logo cs-d-none cs-d-flex-md"
 						onclick="window.location.href='personal_page.html';"
@@ -57,7 +57,7 @@
 				</div>
 			</div>
 			<!--RIGHT SIDE-->
-			<div class="w-100">
+			<div class="cs-w-100">
 				<div id="cs-sidebar-parent" class="cs-sidebar-parent">
 					<div id="cs-topbar" class="cs-topbar">
 						<button
@@ -84,7 +84,7 @@
 									<p class="cs-fw-bold">Code:</p>
 								</div>
 								<div class="cs-col-9 cs-col-lg-10">
-									<input type="text" class="w-100" />
+									<input type="text" class="cs-w-100" />
 								</div>
 							</div>
 							<div class="cs-row cs-align-start cs-mt-2">
@@ -92,7 +92,7 @@
 									<p class="cs-fw-bold">Description:</p>
 								</div>
 								<div class="cs-col-9 cs-col-lg-10">
-									<textarea class="w-100" cols="30" rows="4"></textarea>
+									<textarea class="cs-w-100" cols="30" rows="4"></textarea>
 								</div>
 							</div>
 						</div>
@@ -122,6 +122,8 @@
 				if (!sidebar.classList.contains("cs-d-none")) {
 					sidebar.classList.remove("scale-in-ver-top");
 					sidebar.classList.remove("scale-in-ver-top-reverse");
+					sidebar_parent_md.classList.remove("scale-in-hor-left");
+					sidebar_parent_md.classList.remove("scale-in-hor-left-reverse");
 				}
 			};
 
@@ -143,19 +145,30 @@
 				if (sidebar.classList.contains("cs-d-none")) {
 					// se la sidebar è mobile
 					if (sidebar.parentElement.classList.contains("cs-sidebar-parent")) {
+						sidebar.classList.remove("scale-in-hor-left");
+						sidebar.classList.remove("scale-in-hor-left-reverse");
+
 						sidebar.classList.remove("scale-in-ver-top-reverse");
 						sidebar.classList.add("scale-in-ver-top");
 						sidebar.classList.remove("cs-d-none");
-					} else {
+					}
+					// se la sidebar è desktop
+					else {
 						sidebar.classList.remove("scale-in-ver-top");
 						sidebar.classList.remove("scale-in-ver-top-reverse");
 						sidebar.classList.remove("cs-d-none");
+
+						sidebar.classList.add("scale-in-hor-left");
+						sidebar.classList.remove("scale-in-hor-left-reverse");
 					}
 				}
 				// se la sidebar è aperta
 				else {
 					// se la sidebar è mobile
 					if (sidebar.parentElement.classList.contains("cs-sidebar-parent")) {
+						sidebar.classList.remove("scale-in-hor-left");
+						sidebar.classList.remove("scale-in-hor-left-reverse");
+
 						sidebar.classList.remove("scale-in-ver-top");
 						setTimeout(() => {
 							sidebar.classList.add("scale-in-ver-top-reverse");
@@ -163,10 +176,19 @@
 						setTimeout(() => {
 							sidebar.classList.add("cs-d-none");
 						}, 510);
-					} else {
+					}
+					// se la sidebar è desktop
+					else {
 						sidebar.classList.remove("scale-in-ver-top");
 						sidebar.classList.remove("scale-in-ver-top-reverse");
-						sidebar.classList.add("cs-d-none");
+
+						sidebar.classList.remove("scale-in-hor-left");
+						setTimeout(() => {
+							sidebar.classList.add("scale-in-hor-left-reverse");
+						}, 10);
+						setTimeout(() => {
+							sidebar.classList.add("cs-d-none");
+						}, 510);
 					}
 				}
 			};
