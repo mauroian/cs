@@ -137,9 +137,28 @@
 							class="cs-navbar-voice-wrapper-1 cs-py-2"
 							style="display: none"
 						>
-							<div class="cs-btn cs-btn-lightyellow cs-text-left cs-py-1">
-								Let's get personal!
-								<i class="bi bi-caret-down-fill cs-navbar-arrow"></i>
+							<div class="cs-navbar-voice-1">
+								<div
+									class="cs-btn cs-btn-lightyellow cs-w-100 cs-text-left cs-py-1 nav-toggler"
+									onclick="toggleNavbarSubChildren(this, 'cs-navbar-get-personal');"
+								>
+									Let's get personal!
+									<i
+										class="bi bi-caret-down-fill cs-navbar-arrow nav-toggler-i"
+									></i>
+								</div>
+								<div
+									id="cs-navbar-get-personal"
+									class="cs-navbar-voice-wrapper-2 cs-py-2"
+									style="display: none"
+								>
+									<div class="cs-btn cs-btn-lightyellow cs-text-left cs-py-1">
+										Option 3
+									</div>
+									<div class="cs-btn cs-btn-lightyellow cs-text-left cs-py-1">
+										Option 4
+									</div>
+								</div>
 							</div>
 							<div class="cs-btn cs-btn-lightyellow cs-text-left cs-py-1">
 								Our Gallery
@@ -206,15 +225,15 @@
 						</div>
 					</div>
 					<div class="cs-text-center cs-my-3 cs-d-block cs-d-none-md">
-						<div class="cs-ms-auto cs-d-flex cs-justify-content-center">
+						<div class="cs-ms-auto cs-d-flex cs-justify-content-center cs-mb-3">
 							<a
-								class="cs-btn cs-btn-white cs-btn-login btn-5px cs-w-100 cs-px-3 cs-py-1 cs-ms-3 cs-me-1"
+								class="cs-btn cs-btn-white cs-btn-login cs-w-100 cs-px-3 cs-py-1 cs-ms-3 cs-me-1"
 								href="login.html"
 							>
 								Log In
 							</a>
 							<a
-								class="cs-btn cs-btn-darkred cs-btn-join btn-5px cs-w-100 cs-text-white cs-px-3 cs-py-1 cs-ms-1 cs-me-3"
+								class="cs-btn cs-btn-darkred cs-btn-join cs-w-100 cs-text-white cs-px-3 cs-py-1 cs-ms-1 cs-me-3"
 								href="#"
 								>Join</a
 							>
@@ -236,7 +255,7 @@
 			</div>
 		</div>
 
-		<div class="cs-container cs-mt-3">
+		<div class="cs-container cs-mt-4">
 			<div class="row">
 				<p>
 					Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -274,7 +293,7 @@
 					setTimeout(() => {
 						navbar_container.classList.remove("scale-in-ver-top-reverse");
 						navbar.classList.add("cs-d-none");
-					}, 510);
+					}, 310);
 				}
 			};
 
@@ -284,12 +303,16 @@
 				const i = self.getElementsByTagName("i")[0];
 				if (children_wrapper.style.display === "none") {
 					children_wrapper.style.display = "flex";
+					children_wrapper.style.cssText = "margin-left: 18px;";
 					i.classList.remove("bi-caret-down-fill");
 					i.classList.add("bi-caret-up-fill");
 				} else {
 					children_wrapper.style.display = "none";
 					i.classList.remove("bi-caret-up-fill");
 					i.classList.add("bi-caret-down-fill");
+				}
+				if (!isElementInViewport(children_wrapper)) {
+					children_wrapper.style.cssText = "margin-left: -18px;";
 				}
 			};
 
@@ -329,6 +352,20 @@
 					element.children[0].children[0].classList.add("bi-caret-down-fill");
 					element.children[1].style.display = "none";
 				}
+			};
+
+			/* Se l'elemento è all'interno dello schermo */
+			const isElementInViewport = function (element) {
+				let rect = element.getBoundingClientRect();
+
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <=
+						(window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <=
+						(window.innerWidth || document.documentElement.clientWidth)
+				);
 			};
 
 			/* Al resize della pagina */

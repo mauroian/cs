@@ -6,6 +6,7 @@ $gray: #b1b1b1;
 $darkgray: #666666;
 $black: #2c2c2c;
 $yellow: #ecc10a;
+$mediumyellow: darken(#ffec9a, 10);
 $lightyellow: #ffec9a;
 $orange: #f1a201;
 $lightorange: #fecf4e;
@@ -26,6 +27,7 @@ $colors: (
 	"yellow": $yellow,
 	"orange": $orange,
 	"lightorange": $lightorange,
+	"mediumyellow": $mediumyellow,
 	"lightyellow": $lightyellow,
 	"red": $red,
 	"darkred": $darkred,
