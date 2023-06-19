@@ -1,0 +1,196 @@
+@import "_variables";
+
+.#{$class-prefix}container,
+.#{$class-prefix}container-fluid,
+.#{$class-prefix}container-xxl,
+.#{$class-prefix}container-xl,
+.#{$class-prefix}container-lg,
+.#{$class-prefix}container-md,
+.#{$class-prefix}container-sm {
+	box-sizing: border-box;
+	margin: 0 auto; // top-bottom | right-left
+	padding: 0 1rem;
+	width: 100%; 	/* extra-small */
+}
+
+/* small */
+@media (min-width: $screen-sm) {
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-sm};
+	}
+}
+
+/* medium */
+@media (min-width: $screen-md) {
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-md};
+	}
+}
+
+/* large */
+@media (min-width: $screen-lg) {
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-lg};
+	}
+}
+
+/* extra-large */
+@media (min-width: $screen-xl) {
+	.#{$class-prefix}container-xl,
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-xl};
+	}
+}
+
+/* extra-extra-large */
+@media (min-width: $screen-xxl) {
+	.#{$class-prefix}container-xxl,
+	.#{$class-prefix}container-xl,
+	.#{$class-prefix}container-lg,
+	.#{$class-prefix}container-md,
+	.#{$class-prefix}container-sm,
+	.#{$class-prefix}container {
+		max-width: #{$container-max-width-xxl};
+	}
+}
+
+.#{$class-prefix}row {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* For mobile-first (like in Bootstrap) the columns would be stacked by default and we should write:
+.#{$class-prefix}row > * {
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 100%;
+}
+*/
+
+/* Since we adopt desktop-first: */
+.#{$class-prefix}row > * {
+	flex: 1 0 0%;  /* columns next to each other and equal */
+	/* note: because of the above setting, in each col-n class below, I must set the flex property back 
+	to its default value (otherwise it would not work), which is:  flex: 0 1 auto; */
+}
+
+/* col- classes */
+.#{$class-prefix}col {
+	flex: 1 0 0%;  /* columns next to each other and equal */
+	box-sizing: border-box;
+	padding: 0px;
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-#{$i} {
+		width: calc(100% * (#{$i} / 12));
+		flex: 0 1 auto; /* flex back to its default value */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+
+/* col-sm- classes */
+@media (min-width: $screen-sm) {
+	.#{$class-prefix}col-sm {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-sm-#{$i} {
+		@media (min-width: $screen-sm) {
+			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
+		}
+	}
+}
+
+/* col-md- classes */
+@media (min-width: $screen-md) {
+	.#{$class-prefix}col-md {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-md-#{$i} {
+		@media (min-width: $screen-md) {
+			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
+		}
+	}
+}
+
+/* col-lg- classes */
+@media (min-width: $screen-lg) {
+	.#{$class-prefix}col-lg {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-lg-#{$i} {
+		@media (min-width: $screen-lg) {
+			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
+		}
+	}
+}
+
+/* col-xl- classes */
+@media (min-width: $screen-xl) {
+	.#{$class-prefix}col-xl {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-xl-#{$i} {
+		@media (min-width: $screen-xl) {
+			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
+		}
+	}
+}
+
+/* col-xxl- classes */
+@media (min-width: $screen-xxl) {
+	.#{$class-prefix}col-xxl {
+		flex: 1 0 0%;  /* columns next to each other and equal */
+		box-sizing: border-box;
+		padding: 0px;	
+	}
+}
+@for $i from 1 through 12 {
+	.#{$class-prefix}col-xxl-#{$i} {
+		@media (min-width: $screen-xxl) {
+			width: calc(100% * (#{$i} / 12));
+			flex: 0 1 auto; /* flex back to its default value */
+			box-sizing: border-box;
+			padding: 0px;		
+		}
+	}
+}

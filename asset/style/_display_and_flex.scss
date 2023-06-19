@@ -1,0 +1,165 @@
+//
+//	_display_and_flex.scss	
+//
+// 	Mauro Iannicelli (June '23)
+//
+//	Usage:		@import "_display_and_flex";
+//
+//	It generates classes such as:
+//
+// cs-none, cs-none-sm,  ... cs-none-xl
+// cs-block, cs-block-sm,  ... cs-block-xl
+// cs-flex, cs-flex-sm,  ... cs-flex-xl
+// cs-inline-block,  cs-inline-block-sm,  ... cs-inline-block-xl
+// cs-inline,  cs-inline-sm,  ... cs-inline-xl
+// cs-inline-flex,  cs-inline-flex-sm,  ... cs-inline-flex-xl
+//
+// cs-items-start
+// cs-items-end
+// cs-items-center
+// cs-items-baseline
+// cs-items-stretch
+//
+// cs-justify-normal
+// cs-justify-start
+// cs-justify-end
+// cs-justify-center
+// cs-justify-between
+// cs-justify-around
+// cs-justify-evenly
+// cs-justify-stretch
+//
+// cs-flex-row 
+// cs-flex-row-reverse
+// cs-flex-column 
+// cs-flex-column-reverse
+// cs-flex-wrap
+// cs-flex-wrap-reverse 
+// cs-flex-nowrap
+
+@import "_variables";
+@import "utilities";
+
+/* Display classes */
+
+.#{$class-prefix}none {
+	display: none !important;
+}
+.#{$class-prefix}block {
+	display: block !important;
+}
+.#{$class-prefix}flex {
+	display: flex !important;
+}
+.#{$class-prefix}inline-block {
+	display: inline-block !important;
+}
+.#{$class-prefix}inline {
+	display: inline !important;
+}
+.#{$class-prefix}inline-flex {
+	display: inline-flex !important;
+}
+$bp-names: get-list-of-keys-from-map($breakpoint-vals-and-containers-max-width);
+@each $bp-name in $bp-names {
+	$bp-value: get-value-from-map_list-by-key-and-index($breakpoint-vals-and-containers-max-width,
+		$bp-name,
+		1);
+	@media (min-width: $bp-value) {
+		.#{$class-prefix}none-#{$bp-name} {
+			display: none !important;
+		}
+		.#{$class-prefix}block-#{$bp-name} {
+			display: block !important;
+		}
+		.#{$class-prefix}flex-#{$bp-name} {
+			display: flex !important;
+		}
+		.#{$class-prefix}inline-block-#{$bp-name} {
+			display: inline-block !important;
+		}
+		.#{$class-prefix}inline-#{$bp-name} {
+			display: inline !important;
+		}
+		.#{$class-prefix}inline-flex-#{$bp-name} {
+			display: inline-flex !important;
+		}
+	}
+}
+
+
+
+/* Flex classes */
+.#{$class-prefix}items-start {
+	align-items: flex-start !important;
+}
+.#{$class-prefix}items-end {
+	align-items: flex-end !important;
+}
+.#{$class-prefix}items-center {
+	align-items: center !important;
+}
+.#{$class-prefix}items-baseline {
+	align-items: baseline !important;
+}
+.#{$class-prefix}items-stretch {
+	align-items: stretch !important;
+}
+.#{$class-prefix}justify-normal {
+	justify-content: normal !important;
+}
+.#{$class-prefix}justify-start {
+	justify-content: flex-start !important;
+}
+.#{$class-prefix}justify-end {
+	justify-content: flex-end !important;
+}
+.#{$class-prefix}justify-center {
+	justify-content: center !important;
+}
+.#{$class-prefix}justify-between {
+	justify-content: space-between !important;
+}
+.#{$class-prefix}justify-around {
+	justify-content: space-around !important;
+}
+.#{$class-prefix}justify-evenly {
+	justify-content: space-evenly !important;
+}
+.#{$class-prefix}justify-stretch {
+	justify-content: stretch !important;
+}
+.#{$class-prefix}flex-row {
+	flex-direction:row !important;
+}
+.#{$class-prefix}flex-row-reverse {
+	flex-direction:row-reverse !important;
+}
+.#{$class-prefix}flex-col {
+	flex-direction:column !important;
+}
+.#{$class-prefix}flex-col-reverse {
+	flex-direction:column-reverse !important;
+}
+.#{$class-prefix}flex-wrap {
+	flex-wrap:wrap !important;
+}
+.#{$class-prefix}flex-wrap-reverse {
+	flex-wrap:wrap-reverse !important;
+}
+.#{$class-prefix}flex-nowrap {
+	flex-wrap:nowrap !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

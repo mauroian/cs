@@ -1,999 +1,203 @@
-@font-face {
-	font-family: "Poppins";
-	src: local("Poppins");
-	src: url("../font/Poppins/Poppins-Regular.woff2") format("woff2");
-	src: url("../font/Poppins/Poppins-Regular.woff") format("woff");
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
+@import "_fonts";  // imported fonts
 
-@font-face {
-	font-family: "Poppins";
-	src: local("Poppins");
-	src: url("../font/Poppins/Poppins-Italic.woff2") format("woff2");
-	src: url("../font/Poppins/Poppins-Italic.woff") format("woff");
-	font-weight: normal;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Poppins";
-	src: local("Poppins");
-	src: url("../font/Poppins/Poppins-Bold.woff2") format("woff2");
-	src: url("../font/Poppins/Poppins-Bold.woff") format("woff");
-	font-weight: bold;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Poppins";
-	src: local("Poppins");
-	src: url("../font/Poppins/Poppins-BoldItalic.woff2") format("woff2");
-	src: url("../font/Poppins/Poppins-BoldItalic.woff") format("woff");
-	font-weight: bold;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2")
-			format("woff2"),
-		url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/FiraSans-Italic.woff2") format("woff2"),
-		url("../font/Fira Sans/FiraSans-Italic.woff") format("woff");
-	font-weight: normal;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/FiraSans-Bold.woff2") format("woff2"),
-		url("../font/Fira Sans/FiraSans-Bold.woff") format("woff");
-	font-weight: bold;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Fira Sans";
-	src: url("../font/Fira Sans/FiraSans-BoldItalic.woff2") format("woff2"),
-		url("../font/Fira Sans/FiraSans-BoldItalic.woff") format("woff");
-	font-weight: bold;
-	font-style: italic;
-	font-display: swap;
-}
-
-@import "_variables";
-@import "_grid";
-@import "_margin";
-@import "_padding";
-@import "_vspacers";
-@import "_typography";
-@import "_buttons";
-
-@each $name, $color in $colors {
-	.#{$class-prefix}text-#{$name} {
-		color: #{$color} !important;
-	}
-
-	.#{$class-prefix}bg-#{$name} {
-		background-color: #{$color};
-	}
-
-	.#{$class-prefix}alert-#{$name} {
-		background-color: #{$color};
-		border-radius: 25px;
-		padding: 1rem 1.25rem;
-		display: flex;
-		align-items: center;
-
-		i {
-			font-size: 60px;
-			margin-right: 1rem;
-		}
-	}
-}
-
-.#{$class-prefix}text-center {
-	text-align: center;
-}
-
-.#{$class-prefix}text-left {
-	text-align: left;
-}
-
-.#{$class-prefix}fst-italic {
-	font-style: italic !important;
-}
-
-.#{$class-prefix}fst-normal {
-	font-style: normal !important;
-}
-
-.#{$class-prefix}fw-bold {
-	font-weight: 700 !important;
-}
-
-.#{$class-prefix}d-none {
-	display: none !important;
-}
-
-.#{$class-prefix}d-block {
-	display: block !important;
-}
-
-.#{$class-prefix}d-flex {
-	display: flex !important;
-}
-
-.#{$class-prefix}d-inline-block {
-	display: inline-block !important;
-}
-
-.#{$class-prefix}d-inline {
-	display: inline !important;
-}
-
-@each $breakpoint, $value in $breakpoints {
-	@media (min-width: $value) {
-		.#{$class-prefix}d-none-#{$breakpoint} {
-			display: none !important;
-		}
-
-		.#{$class-prefix}d-block-#{$breakpoint} {
-			display: block !important;
-		}
-
-		.#{$class-prefix}d-flex-#{$breakpoint} {
-			display: flex !important;
-		}
-
-		.#{$class-prefix}d-inline-block-#{$breakpoint} {
-			display: inline-block !important;
-		}
-
-		.#{$class-prefix}d-inline-#{$breakpoint} {
-			display: inline !important;
-		}
-	}
-}
-
-/*-------GENERAL--------*/
 :root {
-	font-size: 18px;
+	font-size: 100%;
 }
 
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box; //see: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
-	font-family: "Poppins", sans-serif;
+	box-sizing: border-box;
+	font-family: "Fira Sans";
+	// font-family: "Poppins", sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	//border: 1px solid black;
 }
 
-.cs-btn {
-	display: inline-block;
-	font-weight: 400;
-	line-height: 1.5;
-	color: #212529;
-	text-decoration: none;
-	vertical-align: middle;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-	border: 1px solid transparent;
-	font-size: 1rem;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+@import "_variables";
+@import "_utilities";
+
+@import "_typography";
+	//	It generates font size classes such as:
+	//
+	//  cs-fs-small-3
+	//  cs-fs-small-2
+	//  cs-fs-small-1
+	//  cs-fs-1
+	//  cs-fs-2
+	//  ...
+	//  cs-fs-7
+	//
+	//  And it also uses them to set the the font-size for h1...h6
+	//
+	//  .h1, ..., .h6
+	//
+	//  cs-fst-normal
+	//  cs-fst-italic
+	//  cs-fw-normal
+	//  cs-fw-bold
+
+@import "_grid";
+	//	It generates classes such as:
+	//
+	//	Container classes:
+	//	.cs-container-fluid |  .cs-container  |  .cs-container-sm  |  .cs-container-md  |  .cs-container-lg  |  .cs-container-xl  (SIMILAR TO BOOTSTRAP)
+	//
+	//	Col classes:
+	// 	.cs-col  |  .cs-col-1 ... .-col-12
+	// 	.cs-col-sm  |  .cs-col-sm-1 ... .cs-col-sm-12
+	//	...
+	// 	.cs-col-xl  |  .cs-col-xl-1 ... .cs-col-xl-12
+	//
+	//	Row classes:
+	//	.cs-row  |  .cs-row > *
+	//
+	//	Width classes
+	//	cs-w-100 | cs-w-75 | cs-w-66 | cs-w-50 | cs-w-33 | cs-w-25
+
+@import "_display_and_flex";
+	//	It generates classes such as:
+	//
+	// cs-none, cs-none-sm,  ... cs-none-xl
+	// cs-block, cs-block-sm,  ... cs-block-xl
+	// cs-flex, cs-flex-sm,  ... cs-flex-xl
+	// cs-inline-block,  cs-inline-block-sm,  ... cs-inline-block-xl
+	// cs-inline,  cs-inline-sm,  ... cs-inline-xl
+	// cs-inline-flex,  cs-inline-flex-sm,  ... cs-inline-flex-xl
+	//
+	// cs-items-start
+	// cs-items-end
+	// cs-items-center
+	// cs-items-baseline
+	// cs-items-stretch
+	//
+	// cs-justify-normal
+	// cs-justify-start
+	// cs-justify-end
+	// cs-justify-center
+	// cs-justify-between
+	// cs-justify-around
+	// cs-justify-evenly
+	// cs-justify-stretch
+	//
+	// cs-flex-row 
+	// cs-flex-row-reverse
+	// cs-flex-column 
+	// cs-flex-column-reverse
+	// cs-flex-wrap
+	// cs-flex-wrap-reverse 
+	// cs-flex-nowrap
+
+@import "_margin";
+	//	It generates margin classes such as:
+	//
+	//	cs-m-0, cs-m-1, cs-m-2 ... cs-m-8, cs-m-auto 
+	//	cs-mt-0, cs-mt-1, cs-mt-2 ... cs-mt-8, cs-mt-auto 
+	//	etc. for: mb|ms|me|mx|my 
+
+@import "_padding";
+	//	It generates padding classes such as:
+	//
+	//	cs-p-0, cs-p-1, cs-p-2 ... cs-p-8, cs-p-auto 
+	//	cs-pt-0, cs-pt-1, cs-pt-2 ... cs-pt-8, cs-pt-auto 
+	//	etc. for: pb|ps|pe|px|py 
+
+@import "_spacers";
+	//	It generates vertical spacer classes (to be assigned to DIVs) such as:
+	//
+	//	.cs-spacer-y-1 ... .cs-spacer-y-8
+	//
+
+
+/* text-align classes */
+//
+// cs-text-center 
+// cs-text-left 
+// cs-text-right 
+// cs-text-justify 
+//
+.#{$class-prefix}text-center {
+	text-align: center;
+}
+.#{$class-prefix}text-left {
+	text-align: left;
+}
+.#{$class-prefix}text-right {
+	text-align: right;
+}
+.#{$class-prefix}text-justify {
+	text-align: justify;
 }
 
-.cs-btn-sm {
-	padding: 0.25rem 0.5rem;
-	font-size: 0.875rem;
-	border-radius: 10px;
-}
 
-.cs-btn-darkred {
-	color: $white;
-	background-color: $darkred;
-	border-color: $darkred;
-	&:hover {
-		background-color: darken($darkred, 5);
-		border-color: darken($darkred, 5);
-	}
-}
+/* other classes */
 
-.cs-btn-white {
-	color: $black;
-	background-color: $white;
-	border-color: $white;
-	&:hover {
-		background-color: darken($white, 5);
-		border-color: darken($white, 5);
-	}
-}
-
-.cs-btn-yellow {
-	color: $black;
-	background-color: $yellow;
-	border-color: $yellow;
-	border-radius: $btn_border_radius;
-	&:hover {
-		background-color: lighten($yellow, 10);
-		border-color: lighten($yellow, 10);
-	}
-}
-
-.cs-btn-lightyellow {
-	color: $black;
-	background-color: $lightyellow;
-	border-color: $lightyellow;
-	border-radius: $btn_border_radius;
-	&:hover {
-		background-color: $yellow;
-		border-color: $yellow;
-	}
-}
-
-.cs-cursor-pointer {
-	cursor: pointer;
-}
-
-.cs-w-100 {
+section {
 	width: 100%;
 }
-.cs-w-75 {
-	width: 75%;
-}
-.cs-w-50 {
-	width: 50%;
-}
-.cs-w-25 {
-	width: 25%;
-}
-
-.#{$class-prefix}navbar-wrapper {
-	width: 100%;
-	height: 50px;
-	background-color: $lightorange;
-	justify-content: center;
-	align-items: center;
-}
-
-.#{$class-prefix}navbar-wrapper > div {
-	margin: 30px;
-}
-
-.#{$class-prefix}navbar-wrapper a {
-	text-decoration: none;
-	color: black;
-
-	&:hover {
-		color: gray;
-	}
-}
-
-.#{$class-prefix}admin-top-navbar-wrapper {
-	width: 100%;
-	height: 70px;
-	background-color: $darkblue;
-}
-
-.#{$class-prefix}admin-side-navbar-wrapper {
-	width: 150px;
-	height: 100vh;
-	background-color: $darkblue;
-}
-
-.#{$class-prefix}section {
-	width: 100%;
-}
-
-.#{$class-prefix}card {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	color: $black;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: $border_radius;
-	border-color: $lightgray;
-}
-
-.#{$class-prefix}card-header {
-	font-size: 20px;
-	font-weight: 500;
-	margin-bottom: 0.5rem;
-	border-bottom: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: $lightgray;
-	width: 100%;
-	padding: 0.5rem 2rem;
-}
-
-.#{$class-prefix}card-body {
-	width: 100%;
-	padding: 2rem;
-}
-
-.#{$class-prefix}card-footer {
-	margin-top: 0.5rem;
-	border-top: 1px;
-	border-top-style: solid;
-	border-top-color: $lightgray;
-	width: 100%;
-	padding: 0.5rem 2rem;
-}
-
-input {
-	font-size: 18px;
-	padding: 0.25rem 0.5rem;
-	border-style: solid;
-	border-width: 1px;
-	border-color: $darkgray;
-	border-radius: 5px;
-
-	&:focus-visible {
-		outline: 0px;
-	}
-}
-
-textarea {
-	font-size: 18px;
-	padding: 0.25rem 0.5rem;
-	border-style: solid;
-	border-width: 1px;
-	border-color: $darkgray;
-	border-radius: 5px;
-	resize: vertical;
-
-	&:focus-visible {
-		outline: 0px;
-	}
-}
-
-.#{$class-prefix}input {
-	padding: 0.25rem 0.5rem;
-	width: 100%;
-	border-color: $gray;
-	border-radius: $border_radius;
-	border-style: solid;
-	border-width: 1px;
-
-	&:focus,
-	&:focus-visible {
-		color: $lightblue;
-		outline: none;
-		border-color: $lightblue;
-		border-width: 1px;
-	}
-}
-
-h6,
-.h6,
-h5,
-.h5,
-h4,
-.h4,
-h3,
-.h3,
-h2,
-.h2,
-h1,
-.h1 {
-	margin-top: 0;
-	margin-bottom: 0;
-	line-height: 1.2;
-}
-
-h1,
-.h1 {
-	font-size: calc(1.375rem + 1.5vw);
-}
-
-@media (min-width: 1200px) {
-	h1,
-	.h1 {
-		font-size: 2.5rem;
-	}
-}
-
-h2,
-.h2 {
-	font-size: calc(1.325rem + 0.9vw);
-}
-
-@media (min-width: 1200px) {
-	h2,
-	.h2 {
-		font-size: 2rem;
-	}
-}
-
-h3,
-.h3 {
-	font-size: calc(1.3rem + 0.6vw);
-}
-
-@media (min-width: 1200px) {
-	h3,
-	.h3 {
-		font-size: 1.75rem;
-	}
-}
-
-h4,
-.h4 {
-	font-size: calc(1.275rem + 0.3vw);
-}
-
-@media (min-width: 1200px) {
-	h4,
-	.h4 {
-		font-size: 1.5rem;
-	}
-}
-
-h5,
-.h5 {
-	font-size: 1.25rem;
-}
-
-h6,
-.h6 {
-	font-size: 1rem;
-}
-
-p {
-	/*margin-top: 0.75rem;*/
-	margin-bottom: 0;
-}
-
 a {
 	color: $blue;
 	text-decoration: underline;
-
 	&:hover {
 		color: $lightblue;
 	}
 }
-
-.cs-align-start {
-	align-items: flex-start !important;
-}
-.cs-align-center {
-	align-items: center !important;
-}
-.cs-align-end {
-	align-items: flex-end !important;
-}
-
-.cs-justify-content-start {
-	justify-content: flex-start !important;
-}
-.cs-justify-content-center {
-	justify-content: center !important;
-}
-.cs-justify-content-end {
-	justify-content: flex-end !important;
-}
-
-.#{$class-prefix}card a {
-	color: $black;
-	text-decoration: underline;
-
-	&:hover {
-		color: $gray;
-	}
+.#{$class-prefix}cursor-pointer {
+	cursor: pointer;
 }
 
 /* DEBUG CLASSES */
 
-.b-black {
-	border: 1px solid black;
-}
+			.d-black {
+				border: 1px solid black;
+			}
 
-.b-blue {
-	border: 1px solid blue;
-}
+			.d-blue {
+				border: 1px solid blue;
+			}
 
-.b-green {
-	border: 1px solid green;
-}
+			.d-green {
+				border: 1px solid green;
+			}
 
-.b-red {
-	border: 1px solid red;
-}
+			.d-red {
+				border: 1px solid red;
+			}
 
-.b-orange {
-	border: 1px solid orange;
-}
+			.d-orange {
+				border: 1px solid orange;
+			}
 
-.b-acqua {
-	border: 1px solid aqua;
-}
+			.d-yellow {
+				border: 1px solid yellow;
+			}
 
-.b-magenta {
-	border: 1px solid magenta;
-}
+			.d-acqua {
+				border: 1px solid aqua;
+			}
 
-.debug {
-	.cs-section {
-		@extend .b-black;
-	}
-	.cs-container {
-		@extend .b-magenta;
-	}
-	.cs-rowx {
-		@extend .b-blue;
-	}
-	[class*="cs-col"] {
-		@extend .b-red;
-	}
-}
+			.d-magenta {
+				border: 1px solid magenta;
+			}
+
+			.debug {
+				.section {
+					@extend .d-black;
+				}
+				[class*="cs-container"] {
+					@extend .d-magenta;
+				}
+				.cs-row {
+					@extend .d-blue;
+				}
+				[class*="cs-col"] {
+					@extend .d-red;
+				}
+			}
 
 /* END DEBUG CLASSES */
-.cs-page-wrapper {
-	min-height: 100vh;
-}
 
-/* TOPBAR */
-.cs-topbar {
-	background: $darkblue;
-	color: $white;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 
-	@media (min-width: $device-md) {
-		justify-content: flex-start;
-	}
-}
-.cs-topbar-logo {
-	background-color: $darkblue;
-	border: 0px;
-	padding: 0.4rem 1rem;
-	cursor: pointer;
 
-	img {
-		width: 2rem;
-	}
-}
-.cs-hamburger-btn {
-	background-color: $darkblue;
-	border-width: 0px;
-	cursor: pointer;
-	padding: 0.75rem;
 
-	&:hover {
-		background-color: lighten($darkblue, 5);
-	}
-}
-.cs-hamburger {
-	width: 30px;
-	height: 4px;
-	background-color: $white;
-	&:first-child {
-		margin-bottom: 6px;
-	}
-	&:last-child {
-		margin-top: 6px;
-	}
-}
 
-/* SIDEBAR */
-.cs-sidebar-parent-md {
-	background: $darkblue;
-}
-.cs-sidebar {
-	min-height: 4rem;
-	background: $darkblue;
-	color: $white;
-	min-width: 200px;
-
-	@media (max-width: $device-md) {
-		position: absolute;
-		width: 100%;
-	}
-
-	button {
-		width: 100%;
-		color: $white;
-		background-color: $darkblue;
-		border: 0px;
-		display: flex;
-		align-items: center;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		padding-top: 0.65rem;
-		padding-bottom: 0.65rem;
-
-		&:hover {
-			background-color: lighten($darkblue, 5);
-			cursor: pointer;
-		}
-
-		img {
-			width: 2rem;
-		}
-
-		p {
-			margin-top: 0px;
-			font-size: initial;
-			white-space: nowrap;
-		}
-	}
-
-	.cs-sidebar-l2-btn {
-		padding-left: 2rem;
-	}
-
-	.cs-sidebar-l3-btn {
-		padding-left: 3rem;
-	}
-
-	.cs-sidebar-logo {
-		padding-top: 0.4rem;
-		padding-bottom: 0.4rem;
-
-		&:hover {
-			background-color: $darkblue !important;
-			cursor: pointer;
-		}
-	}
-}
-
-.cs-right-content-wrapper {
-	overflow-y: auto;
-	height: calc(100vh - 51px); // 51px is topbar height
-}
-
-/* NAVBAR */
-
-.cs-navbar-top {
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-.cs-btn-join {
-	&:hover {
-		color: $white !important;
-	}
-}
-
-.cs-btn-login {
-	&:hover {
-		color: $black !important;
-		background-color: $lightgray;
-		border-color: $lightgray;
-	}
-}
-
-.cs-navbar-subtitle {
-	font-size: small;
-	font-weight: 700;
-}
-
-.cs-navbar-social-icon {
-	text-decoration: none;
-
-	&:hover {
-		color: darken($darkgray, 5) !important;
-	}
-}
-
-.cs-navbar-hamburger-btn {
-	background-color: $white;
-	border-width: 0px;
-	cursor: pointer;
-	padding: 0.75rem;
-}
-.cs-navbar-hamburger {
-	width: 30px;
-	height: 4px;
-	background-color: $black;
-	&:first-child {
-		margin-bottom: 6px;
-	}
-	&:last-child {
-		margin-top: 6px;
-	}
-}
-
-.cs-navbar-arrow {
-	font-size: 0.75rem;
-}
-
-.cs-navbar-badge {
-	font-size: 0.55rem;
-	font-weight: 700;
-	text-align: center;
-	white-space: nowrap;
-	border-radius: 15px;
-	background-color: darken($yellow, 10);
-	padding: 0.1rem 0.35rem;
-}
-
-.cs-navbar-voice-wrapper-1 {
-	background-color: $lightyellow;
-	border: 1px solid rgba(44, 44, 44, 0.15);
-	border-radius: 10px;
-	display: flex;
-	position: absolute;
-	flex-direction: column;
-	margin-left: -6px;
-
-	@media (max-width: $device-md) {
-		position: relative;
-		border: 0px;
-		margin-left: 0px;
-		border-radius: 0px;
-	}
-
-	> div {
-		padding-left: 1rem;
-		padding-right: 1rem;
-
-		@media (max-width: $device-md) {
-			padding-left: 2rem;
-			padding-right: 2rem;
-		}
-	}
-}
-
-.cs-navbar-voice-wrapper-2 {
-	background-color: $mediumyellow;
-	border: 1px solid rgba(44, 44, 44, 0.15);
-	border-radius: 10px;
-	display: flex;
-	position: absolute;
-	flex-direction: column;
-	width: 100%;
-
-	@media (max-width: $device-md) {
-		background-color: $lightyellow;
-		position: relative;
-		border: 0px;
-		border-radius: 0px;
-		margin-left: 0px;
-	}
-
-	> div {
-		padding-left: 1rem;
-		padding-right: 1rem;
-		background-color: $mediumyellow;
-		border-color: $mediumyellow;
-
-		@media (max-width: $device-md) {
-			padding-left: 3rem;
-			padding-right: 3rem;
-			background-color: $lightyellow;
-			border-color: $lightyellow;
-		}
-	}
-}
-
-.cs-navbar-lev2-container {
-	padding-top: 0rem;
-	padding-bottom: 0rem;
-	@media (max-width: $device-md) {
-		padding-top: 0.65rem;
-		padding-bottom: 0.65rem;
-		position: absolute;
-		width: 100%;
-	}
-}
-
-.cs-navbar-lev2-wrapper {
-	text-align: center;
-
-	@media (max-width: $device-md) {
-		text-align: left;
-		display: grid;
-	}
-
-	> div {
-		padding-top: 0px;
-		padding-bottom: 0px;
-		padding-left: 0.25rem;
-		padding-right: 0.25rem;
-
-		@media (max-width: $device-md) {
-			padding-left: 0px;
-			padding-right: 0px;
-		}
-	}
-}
-
-.cs-navbar-voice-0 {
-	> div {
-		&:first-child {
-			@media (max-width: $device-md) {
-				padding-left: 1rem;
-				padding-right: 1rem;
-			}
-		}
-	}
-}
-
-.cs-navbar-voice-1 {
-	padding-left: 0px !important;
-	padding-right: 0px !important;
-
-	> div {
-		&:first-child {
-			@media (max-width: $device-md) {
-				padding-left: 2rem;
-				padding-right: 2rem;
-			}
-		}
-	}
-}
-
-/* ANIMATIONS */
-
-.scale-in-ver-top {
-	-webkit-animation: scale-in-ver-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-		both;
-	animation: scale-in-ver-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-	> div,
-	> button {
-		-webkit-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-		animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	}
-}
-
-.scale-in-ver-top-reverse {
-	-webkit-animation: scale-in-ver-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-		reverse both;
-	animation: scale-in-ver-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse
-		both;
-	> div,
-	> button {
-		-webkit-animation: fade-out 0.3s ease-out both;
-		animation: fade-out 0.3s ease-out both;
-	}
-}
-
-@-webkit-keyframes scale-in-ver-top {
-	0% {
-		-webkit-transform: scaleY(0);
-		transform: scaleY(0);
-		-webkit-transform-origin: 100% 0%;
-		transform-origin: 100% 0%;
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scaleY(1);
-		transform: scaleY(1);
-		-webkit-transform-origin: 100% 0%;
-		transform-origin: 100% 0%;
-		opacity: 1;
-	}
-}
-@keyframes scale-in-ver-top {
-	0% {
-		-webkit-transform: scaleY(0);
-		transform: scaleY(0);
-		-webkit-transform-origin: 100% 0%;
-		transform-origin: 100% 0%;
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scaleY(1);
-		transform: scaleY(1);
-		-webkit-transform-origin: 100% 0%;
-		transform-origin: 100% 0%;
-		opacity: 1;
-	}
-}
-
-@-webkit-keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-@keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-webkit-keyframes fade-out {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes fade-out {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-
-.scale-in-hor-left {
-	/*-webkit-animation: scale-in-hor-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-		both;
-	animation: scale-in-hor-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;*/
-	-webkit-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	> div,
-	> button {
-		-webkit-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-		animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	}
-}
-
-.scale-in-hor-left-reverse {
-	/*-webkit-animation: scale-in-hor-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-		reverse both;
-	animation: scale-in-hor-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse
-		both;*/
-	-webkit-animation: fade-out 0.3s ease-out both;
-	animation: fade-out 0.3s ease-out both;
-	> div,
-	> button {
-		-webkit-animation: fade-out 0.3s ease-out both;
-		animation: fade-out 0.3s ease-out both;
-	}
-}
-
-@-webkit-keyframes scale-in-hor-left {
-	0% {
-		-webkit-transform: scaleX(0);
-		transform: scaleX(0);
-		-webkit-transform-origin: 0% 0%;
-		transform-origin: 0% 0%;
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scaleX(1);
-		transform: scaleX(1);
-		-webkit-transform-origin: 0% 0%;
-		transform-origin: 0% 0%;
-		opacity: 1;
-	}
-}
-@keyframes scale-in-hor-left {
-	0% {
-		-webkit-transform: scaleX(0);
-		transform: scaleX(0);
-		-webkit-transform-origin: 0% 0%;
-		transform-origin: 0% 0%;
-		opacity: 1;
-	}
-	100% {
-		-webkit-transform: scaleX(1);
-		transform: scaleX(1);
-		-webkit-transform-origin: 0% 0%;
-		transform-origin: 0% 0%;
-		opacity: 1;
-	}
-}

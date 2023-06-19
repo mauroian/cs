@@ -1,60 +1,71 @@
-@import "_variables";
+//
+//	_margin.scss	
+//
+// 	Mauro Iannicelli (June '23)
+//
+//	Usage:		@import "_margin";
+//
+//	It generates margin classes such as:
+//
+//	cs-m-0, cs-m-1, cs-m-2 ... cs-m-8, cs-m-auto 
+//	cs-mt-0, cs-mt-1, cs-mt-2 ... cs-mt-8, cs-mt-auto 
+//	etc. for: mb|ms|me|mx|my 
+//
 
-@each $type in $tbsexy {
-	$rem_current: 0;
-	$cont_max: 5;
-	$cont_current: 0;
-	@while $cont_current <= $cont_max {
-		.#{$class-prefix}m#{$type}-#{$cont_current} {
-			@if $type == "t" {
-				margin-top: $rem_current + rem !important;
-			} @else if $type == "b" {
-				margin-bottom: $rem_current + rem !important;
-			} @else if $type == "s" {
-				margin-left: $rem_current + rem !important;
-			} @else if $type == "e" {
-				margin-right: $rem_current + rem !important;
-			} @else if $type == "x" {
-				margin-left: $rem_current + rem !important;
-				margin-right: $rem_current + rem !important;
-			} @else if $type == "y" {
-				margin-top: $rem_current + rem !important;
-				margin-bottom: $rem_current + rem !important;
-			} @else {
-				margin: $rem_current + rem !important;
+@import "_variables";
+@import "_utilities";
+
+/* Margin classes */
+
+@mixin generate-margins($margins,$to-unit) {
+
+	@each $type in $tbsexy {
+		@each $sel-suffix, $value in $margins {
+			.#{$class-prefix}m#{$type}-#{$sel-suffix} {
+
+				@if $type == "t" {
+					margin-top: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "b" {
+					margin-bottom: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "s" {
+					margin-left: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "e" {
+					margin-right: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "x" {
+					margin-left: convert-to-unit($value,$to-unit) !important;
+					margin-right: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "y" {
+					margin-top: convert-to-unit($value,$to-unit) !important;
+					margin-bottom: convert-to-unit($value,$to-unit) !important;
+				} @else {
+					margin: convert-to-unit($value,$to-unit) !important;
+				}			
 			}
 		}
-
-		@if $cont_current == 0 {
-			$rem_current: 0.25;
-		} @else if $cont_current >= 4 {
-			$rem_current: $rem_current + 1;
-		} @else {
-			$rem_current: $rem_current * 2;
-		}
-
-		$cont_current: $cont_current + 1;
 	}
-}
 
-@each $type in $tbsexy {
-	.#{$class-prefix}m#{$type}-auto {
-		@if $type == "t" {
-			margin-top: auto !important;
-		} @else if $type == "b" {
-			margin-bottom: auto !important;
-		} @else if $type == "s" {
-			margin-left: auto !important;
-		} @else if $type == "e" {
-			margin-right: auto !important;
-		} @else if $type == "x" {
-			margin-left: auto !important;
-			margin-right: auto !important;
-		} @else if $type == "y" {
-			margin-top: auto !important;
-			margin-bottom: auto !important;
-		} @else {
-			margin: auto !important;
+	@each $type in $tbsexy {
+		.#{$class-prefix}m#{$type}-auto {
+			@if $type == "t" {
+				margin-top: auto !important;
+			} @else if $type == "b" {
+				margin-bottom: auto !important;
+			} @else if $type == "s" {
+				margin-left: auto !important;
+			} @else if $type == "e" {
+				margin-right: auto !important;
+			} @else if $type == "x" {
+				margin-left: auto !important;
+				margin-right: auto !important;
+			} @else if $type == "y" {
+				margin-top: auto !important;
+				margin-bottom: auto !important;
+			} @else {
+				margin: auto !important;
+			}
 		}
 	}
 }
+
+@include generate-margins($margins, "rem");
+

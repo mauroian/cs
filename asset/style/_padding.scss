@@ -1,38 +1,71 @@
-@import "variables";
+//
+//	padding.scss	
+//
+// 	Mauro Iannicelli (June '23)
+//
+//	Usage:		@import "padding";
+//
+//	It generates padding classes such as:
+//
+//	cs-p-0, cs-p-1, cs-p-2 ... cs-p-8, cs-p-auto 
+//	cs-pt-0, cs-pt-1, cs-pt-2 ... cs-pt-8, cs-pt-auto 
+//	etc. for: pb|ps|pe|px|py 
+//
 
-@each $type in $tbsexy {
-	$rem_current: 0;
-	$cont_max: 5;
-	$cont_current: 0;
-	@while $cont_current <= $cont_max {
-		.#{$class-prefix}p#{$type}-#{$cont_current} {
-			@if $type == "t" {
-				padding-top: $rem_current + rem !important;
-			} @else if $type == "b" {
-				padding-bottom: $rem_current + rem !important;
-			} @else if $type == "s" {
-				padding-left: $rem_current + rem !important;
-			} @else if $type == "e" {
-				padding-right: $rem_current + rem !important;
-			} @else if $type == "x" {
-				padding-left: $rem_current + rem !important;
-				padding-right: $rem_current + rem !important;
-			} @else if $type == "y" {
-				padding-top: $rem_current + rem !important;
-				padding-bottom: $rem_current + rem !important;
-			} @else {
-				padding: $rem_current + rem !important;
+@import "_variables";
+@import "_utilities";
+
+/* Padding classes */
+
+@mixin generate-paddings($paddings,$to-unit) {
+
+	@each $type in $tbsexy {
+		@each $sel-suffix, $value in $paddings {
+			.#{$class-prefix}p#{$type}-#{$sel-suffix} {
+
+				@if $type == "t" {
+					padding-top: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "b" {
+					padding-bottom: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "s" {
+					padding-left: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "e" {
+					padding-right: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "x" {
+					padding-left: convert-to-unit($value,$to-unit) !important;
+					padding-right: convert-to-unit($value,$to-unit) !important;
+				} @else if $type == "y" {
+					padding-top: convert-to-unit($value,$to-unit) !important;
+					padding-bottom: convert-to-unit($value,$to-unit) !important;
+				} @else {
+					padding: convert-to-unit($value,$to-unit) !important;
+				}			
 			}
 		}
+	}
 
-		@if $cont_current == 0 {
-			$rem_current: 0.25;
-		} @else if $cont_current >= 4 {
-			$rem_current: $rem_current + 1;
-		} @else {
-			$rem_current: $rem_current * 2;
+	@each $type in $tbsexy {
+		.#{$class-prefix}p#{$type}-auto {
+			@if $type == "t" {
+				padding-top: auto !important;
+			} @else if $type == "b" {
+				padding-bottom: auto !important;
+			} @else if $type == "s" {
+				padding-left: auto !important;
+			} @else if $type == "e" {
+				padding-right: auto !important;
+			} @else if $type == "x" {
+				padding-left: auto !important;
+				padding-right: auto !important;
+			} @else if $type == "y" {
+				padding-top: auto !important;
+				padding-bottom: auto !important;
+			} @else {
+				padding: auto !important;
+			}
 		}
-
-		$cont_current: $cont_current + 1;
 	}
 }
+
+@include generate-paddings($paddings, "rem");
+

@@ -1,0 +1,66 @@
+@import "_variables";
+@import "_utilities";
+
+//Antonio Panfili 'alert' classes
+@each $name, $color in $colors {
+	.#{$class-prefix}text-#{$name} {
+		color: #{$color} !important;
+	}
+
+	.#{$class-prefix}bg-#{$name} {
+		background-color: #{$color};
+	}
+
+	.#{$class-prefix}alert-#{$name} {
+		background-color: #{$color};
+		border-radius: 25px;
+		padding: 1rem 1.25rem;
+		display: flex;
+		align-items: center;
+
+		i {
+			font-size: 60px;
+			margin-right: 1rem;
+		}
+	}
+}
+
+
+/// THIS IS NOT USED AS OF NOW. IT'S THE ORIGINAL FORMULA WHERE SOME VARS ARE IN PX, HENCE FULL ACCESSIBILITY IS LOST
+@mixin generate-selector-for-property-fluid-px($selector, $prop, $p-min, $p-max, $vw-min, $vw-max) {
+
+	/// MI: here I have implemented the fluid-responsive formula from https://websemantics.uk/tools/fluid-responsive-property-calculator/
+
+	/// font-size  = calc(ZZ + ((1vw - XX) * YY))
+	/// where:
+	/// XX = min_viewport / 100
+	/// YY = 100 * (max_font_size - min_font_size) / (max_viewport - min_viewport)
+	/// ZZ = Minimum font-size stated in REM
+
+	$selector: #{$class-prefix}#{$selector};
+	
+	$ZZ: px_to_rem($p-min);
+	$XX: calc($vw-min/100);
+	$YY: calc(100 * ($p-max - $p-min)/($vw-max - $vw-min));
+	$YY: decimal-round($YY, 4);
+
+	@include newLine;
+
+	/* .#{$selector} */
+	.#{$selector} {
+		#{$prop}: 	#{$p-min}px;
+	}
+
+	@media (min-width: #{$vw-min}px) {
+		.#{$selector} {
+			#{$prop}: calc(#{$ZZ}rem + ((1vw - #{$XX}px) * #{$YY}));
+			min-height: 0vw;
+		}
+	}
+
+	@media (min-width: #{$vw-max}px) {
+		.#{$selector} {
+			#{$prop}: #{$p-max}px;
+		}
+	} 
+}

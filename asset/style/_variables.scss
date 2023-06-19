@@ -1,4 +1,4 @@
-$class-prefix: cs-;
+$class-prefix: cs-;  //class prefix for this 'proprietary' framework
 
 $white: #ffffff;
 $lightgray: #d8d8d8;
@@ -25,10 +25,10 @@ $colors: (
 	"darkgray": $darkgray,
 	"black": $black,
 	"yellow": $yellow,
-	"orange": $orange,
-	"lightorange": $lightorange,
 	"mediumyellow": $mediumyellow,
 	"lightyellow": $lightyellow,
+	"orange": $orange,
+	"lightorange": $lightorange,
 	"red": $red,
 	"darkred": $darkred,
 	"green": $green,
@@ -40,25 +40,74 @@ $colors: (
 
 $tbsexy: "", "t", "b", "s", "e", "x", "y";
 
-$device-sm: 576px;
-$device-md: 768px;
-$device-lg: 992px;
-$device-xl: 1200px;
-$device-xxl: 1400px;
-
-$breakpoints: (
-	"sm": $device-sm,
-	"md": $device-md,
-	"lg": $device-lg,
-	"xl": $device-xl,
-	"xxl": $device-xxl,
-);
-
-$container-max-width-sm: 540px;
-$container-max-width-md: 720px;
-$container-max-width-lg: 960px;
-$container-max-width-xl: 1140px;
-$container-max-width-xxl: 1320px;
-
+///borders
 $border_radius: 5px;
 $btn_border_radius: 0px;
+
+//variables for typography
+$font-size-at-min-viweport:380px;
+$font-size-at-max-viweport:992px;
+
+//A key/value MAP, where each value is a LIST with two elements
+$breakpoint-vals-and-containers-max-width:(
+	sm: 	(576px,		540px),
+	md: 	(768px, 	720px),
+	lg: 	(1024px, 	960px),
+	xl: 	(1280px,	1180px),
+);
+
+//A key/value MAP, where each value is a LIST with two elements
+$font-sizes-min-max:(
+	fs-small-3:(12px, 12px),
+	fs-small-2:(14px, 14px),
+	fs-small-1:(16px, 17px),
+	fs-1:(21px, 21px),
+	fs-2:(24px, 25px),
+	fs-3:(28px, 30px),
+	fs-4:(35px, 44px),
+	fs-5:(44px, 53px),
+	fs-6:(54px, 68px),
+	fs-7:(66px, 80px)
+);
+
+$margins:( 
+	"0":	0px,
+	"1":	4px,
+	"2":	8px,
+	"3":	12px, 
+	"4":	16px,
+	"5": 	24px,
+	"6":	32px,
+	"7":	44px,
+	"8": 	56px,
+	"9":	72px,
+	"10":	88px
+);
+
+$paddings:( 
+	"0":	0px,
+	"1":	4px,
+	"2":	8px,
+	"3":	12px, 
+	"4":	16px,
+	"5": 	24px,
+	"6":	32px,
+	"7":	44px,
+	"8": 	56px,
+	"9":	72px,
+	"10":	88px
+);
+
+$spacers-y:( 
+	"1": 5px,
+	"2": 10px,
+	"3": 15px,
+	"4": 25px,
+	"5": 40px,
+	"6": 55px,
+	"7": 80px,
+	"8": 120px,
+	"9": 160px,
+	"10": 200px		
+);
+

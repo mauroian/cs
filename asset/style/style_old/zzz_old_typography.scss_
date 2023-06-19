@@ -1,0 +1,298 @@
+@import "_variables";
+
+
+/* typography Christian (cc-)
+With font-ratio (only, 1 is smallest, 2 is larger etc) */
+
+$ratio-cnt: 1;
+$ratio-cnt-max: 12;
+$ratio-initial-size: 0.75;  //0.75
+$ratio-scale-size: 1.16;   //1.125; // major second
+
+@while $ratio-cnt <= $ratio-cnt-max {
+	// $size: 1rem;
+
+	.cc-fs-#{$ratio-cnt} {
+		font-size: $ratio-initial-size + rem !important;
+	}
+
+	$ratio-cnt: $ratio-cnt + 1;
+	$ratio-initial-size: $ratio-initial-size * $ratio-scale-size;
+}
+
+
+/* typography Bootstrap (except that 1 is smaller, 2 is larger etc.) */
+
+.bs-fs-1 {
+    font-size: calc(1.375rem + 1.5vw) !important;
+  }
+  
+  .bs-fs-2 {
+    font-size: calc(1.325rem + 0.9vw) !important;
+  }
+  
+  .bs-fs-3 {
+    font-size: calc(1.3rem + 0.6vw) !important;
+  }
+  
+  .bs-fs-4 {
+    font-size: calc(1.275rem + 0.3vw) !important;
+  }
+  
+  .bs-fs-5 {
+    font-size: 1.25rem !important;
+  }
+  
+  .bs-fs-6 {
+    font-size: 1rem !important;
+  }
+
+  
+  
+
+/* typography Antonio Panfili (ap-) */
+
+$font-size: 10;
+$default: 16;
+
+@while $font-size <=70 {
+	.ap-fs-#{$font-size} {
+		font-size: $font-size + px !important;
+
+		@media (max-width: $screen-lg) {
+			@if ($font-size > 50) {
+				font-size: 50px !important;
+			} @else if ($font-size >=30) {
+				font-size: 40px !important;
+			} @else {
+				font-size: $font-size + px !important;
+			}
+		}
+
+		@media (max-width: $screen-md) {
+			@if ($font-size > 50) {
+				font-size: 35px !important;
+			} @else if ($font-size >=30) {
+				font-size: 30px !important;
+			} @else {
+				font-size: $default + px !important;
+			}
+		}
+
+		@media (max-width: $screen-sm) {
+			font-size: $default + px !important;
+		}
+	}
+
+	$font-size: $font-size + 10;
+}
+
+
+/* typography like Bootstrap (bs-)
+(only, 1 is smallest, 2 is larger etc) */
+
+$cnt: 1;
+@while $cnt <=6 {
+	$size: 1rem;
+	@if ($cnt ==2) {
+		$size: 1.25rem;
+	} @else if ($cnt ==3) {
+		$size: 1.275rem;
+	} @else if ($cnt ==4) {
+		$size: 1.3rem;
+	} @else if ($cnt ==5) {
+		$size: 1.325rem;
+	} @else if ($cnt ==6) {
+		$size: 1.375rem;
+	}
+	.bs-fs-#{$cnt} {
+		font-size: calc($size + 1.5vw) !important;
+	}
+	$cnt: $cnt + 1;
+}
+
+
+
+/*Typography Mauro da Webflow (wf-)  */
+
+
+.wf-fs-5 {
+    font-size: 55px !important;
+}
+
+.wf-fs-4 {
+    font-size: 45px !important;
+}
+
+.wf-fs-3 {
+    font-size: 33px !important;
+}
+
+.wf-fs-2 {
+    font-size: 26px !important;
+}
+
+.wf-fs-1 {
+    font-size: 22px !important;
+}
+
+.wf-fs-sm1 {
+    font-size: 18px !important;
+}
+
+.wf-fs-sm2 {
+    font-size: 15px !important;
+}
+
+@media (max-width: #{$screen-lg}) {
+
+    .wf-fs-5 {
+        font-size: 45px !important;
+    }
+
+    .wf-fs-4 {
+        font-size: 36px !important;
+    }
+
+    .wf-fs-3 {
+        font-size: 30px !important;
+    }
+
+    .wf-fs-2 {
+        font-size: 24px !important;
+    }
+
+    .wf-fs-1 {
+        font-size: 20px !important;
+    }
+
+    .wf-fs-sm1 {
+        font-size: 17px !important;
+    }
+
+    .wf-fs-sm2 {
+        font-size: 14px !important;
+    }
+
+}
+
+@media (max-width: #{$screen-md}) {
+
+    .wf-fs-5 {
+        font-size: 35px !important;
+    }
+
+    .wf-fs-4 {
+        font-size: 30px !important;
+    }
+
+    .wf-fs-3 {
+        font-size: 26px !important;
+    }
+
+    .wf-fs-2 {
+        font-size: 22px !important;
+    }
+
+    .wf-fs-1 {
+        font-size: 18px !important;
+    }
+
+    .wf-fs-sm1 {
+        font-size: 16px !important;
+    }
+
+    .wf-fs-sm2 {
+        font-size: 13px !important;
+    }
+
+}
+
+@media (max-width: #{$screen-sm}) {
+
+    .wf-fs-5 {
+        font-size: 26px !important;
+    }
+
+    .wf-fs-4 {
+        font-size: 23px !important;
+    }
+
+    .wf-fs-3 {
+        font-size: 21px !important;
+    }
+
+    .wf-fs-2 {
+        font-size: 19px !important;
+    }
+
+    .wf-fs-1 {
+        font-size: 16px !important;
+    }
+
+    .wf-fs-sm1 {
+        font-size: 15px !important;
+    }
+
+    .wf-fs-sm2 {
+        font-size: 12px !important;
+    }
+}
+
+
+/* Formulas from  www.fluid-type-scale.com  (fts-)
+
+with these params: 
+
+https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.27&maxFontSize=22&maxWidth=992&maxRatio=1.27&steps=sm3%2Csm2%2Csm%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C8&baseStep=1&prefix=fts-fs&decimals=2&useRems=on&remValue=16&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground&previewWidth=488
+
+These must be placed in root:
+
+--fts-fs-sm3: clamp(0.49rem, 0.49vw + 0.36rem, 0.67rem);
+--fts-fs-sm2: clamp(0.62rem, 0.63vw + 0.46rem, 0.85rem);
+--fts-fs-sm: clamp(0.79rem, 0.8vw + 0.59rem, 1.08rem);
+--fts-fs-1: clamp(1rem, 1.01vw + 0.75rem, 1.38rem);
+--fts-fs-2: clamp(1.27rem, 1.29vw + 0.95rem, 1.75rem);
+--fts-fs-3: clamp(1.61rem, 1.63vw + 1.2rem, 2.22rem);
+--fts-fs-4: clamp(2.05rem, 2.08vw + 1.53rem, 2.82rem);
+--fts-fs-5: clamp(2.6rem, 2.64vw + 1.94rem, 3.58rem);
+--fts-fs-6: clamp(3.3rem, 3.35vw + 2.47rem, 4.54rem);
+--fts-fs-7: clamp(4.2rem, 4.25vw + 3.13rem, 5.77rem);
+--fts-fs-8: clamp(5.33rem, 5.4vw + 3.98rem, 7.33rem);
+*/
+
+.fts-fs-sm3 {
+	font-size: var(--fts-fs-sm3);
+}
+.fts-fs-sm2 {
+	font-size: var(--fts-fs-sm3);
+}
+.fts-fs-sm1 {
+	font-size: var(--fts-fs-sm3);
+}
+.fts-fs-1 {
+	font-size: var(--fts-fs-1);
+}
+.fts-fs-2 {
+	font-size: var(--fts-fs-2);
+}
+.fts-fs-3 {
+	font-size: var(--fts-fs-3);
+}
+.fts-fs-4 {
+	font-size: var(--fts-fs-4);
+}
+.fts-fs-5 {
+	font-size: var(--fts-fs-5);
+}
+.fts-fs-6 {
+	font-size: var(--fts-fs-6);
+}
+.fts-fs-7 {
+	font-size: var(--fts-fs-7);
+}
+.fts-fs-8 {
+	font-size: var(--fts-fs-8);
+}
+
+

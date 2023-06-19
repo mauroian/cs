@@ -1,114 +1,56 @@
+//
+//	spacers.scss	
+//
+// 	Mauro Iannicelli (June '23)
+//
+//	Usage:		@import "_spacers";
+//
+//	It generates vertical spacer classes (to be assigned to DIVs) such as:
+//
+//	.cs-spacer-y-1 ... .cs-spacer-y-8
+//
 
+@import "_variables";
+@import "utilities";
 
-.#{$class-prefix}vspacer-1 {
-    height: 0.5rem;
-}
+/* Spacers classes */
 
-.#{$class-prefix}vspacer-2 {
-    height: 1rem;
-}
-
-.#{$class-prefix}vspacer-3 {
-    height: 2rem;
-}
-
-.#{$class-prefix}vspacer-4 {
-    height: 4rem;
-}
-
-.#{$class-prefix}vspacer-5 {
-    height: 6rem;
-}
-
-/*
-
-.#{$class-prefix}vspacer-1 {
-    height: 10px;
-}
-
-.#{$class-prefix}vspacer-2 {
-    height: 15px;
-}
-
-.#{$class-prefix}vspacer-3 {
-    height: 40px;
-}
-
-
-.#{$class-prefix}vspacer-4 {
-    height: 80px;
-}
-
-.#{$class-prefix}vspacer-5 {
-    height: 120px;
-}
-
-@media (max-width: 992px) {
-    .#{$class-prefix}vspacer-1 {
-        height: 8px;
-    }
-
-    .#{$class-prefix}vspacer-2 {
-        height: 13px;
-    }
-
-    .#{$class-prefix}vspacer-3 {
-        height: 30px;
-    }
-
-
-    .#{$class-prefix}vspacer-4 {
-        height: 60px;
-    }
-
-    .#{$class-prefix}vspacer-5 {
-        height: 90px;
+@mixin generate-spacers($spacers-y,$to-unit) {
+    @each $sel-suffix, $value in $spacers-y {
+        .#{$class-prefix}spacer-y-#{$sel-suffix} {
+            height: convert-to-unit($value,$to-unit) !important;
+        }
     }
 }
 
-@media (max-width: 768px) {
-    .#{$class-prefix}vspacer-1 {
-        height: 6px;
-    }
-
-    .#{$class-prefix}vspacer-2 {
-        height: 11px;
-    }
-
-    .#{$class-prefix}vspacer-3 {
-        height: 25px;
-    }
+@include generate-spacers($spacers-y, "rem");
 
 
-    .#{$class-prefix}vspacer-4 {
-        height: 40px;
-    }
-
-    .#{$class-prefix}vspacer-5 {
-        height: 75px;
-    }
-}
-
-@media (max-width: 576px) {
-    .#{$class-prefix}vspacer-1 {
-        height: 5px;
-    }
-
-    .#{$class-prefix}vspacer-2 {
-        height: 8px;
-    }
-
-    .#{$class-prefix}vspacer-3 {
-        height: 20px;
-    }
 
 
-    .#{$class-prefix}vspacer-4 {
-        height: 30px;
-    }
 
-    .#{$class-prefix}vspacer-5 {
-        height: 50px;
-    }
-}
-*/
+
+// ################# NOT USED FOR NOW:
+
+        // $spacers-y-min-max:( 
+        //     spacer-y-1:(5, 5),
+        //     spacer-y-2:(10, 10),
+        //     spacer-y-3:(15, 15),
+        //     spacer-y-4:(25, 25),
+        //     spacer-y-5:(40, 40),
+        //     spacer-y-6:(55, 55),
+        //     spacer-y-7:(80, 80),
+        //     spacer-y-8:(120, 120)	
+        // );
+
+
+        // Use this, if I want responsive-fluid properties from $spacers-y-min-max
+
+        // @include generate-all-selectors-for-property-fluid(
+        //     "height",
+        //     $spacers-y-min-max,  
+        //     $font-size-at-min-viweport,
+        //     $font-size-at-max-viweport);
+
+        // use this, if I want fixed value property from the max val of $spacers-y-min-max
+        // @include generate-all-selectors-for-property-from-map-max-val("height", $spacers-y-min-max);

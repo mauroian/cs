@@ -1,0 +1,67 @@
+
+/* Imported Fonts */
+
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins");
+    src: url("../font/Poppins/Poppins-Regular.woff2") format("woff2");
+    src: url("../font/Poppins/Poppins-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: local("Poppins");
+    src: url("../font/Poppins/Poppins-Italic.woff2") format("woff2");
+    src: url("../font/Poppins/Poppins-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: local("Poppins");
+    src: url("../font/Poppins/Poppins-Bold.woff2") format("woff2");
+    src: url("../font/Poppins/Poppins-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Poppins";
+    src: local("Poppins");
+    src: url("../font/Poppins/Poppins-BoldItalic.woff2") format("woff2");
+    src: url("../font/Poppins/Poppins-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("../font/Fira Sans/../font/Fira Sans/FiraSans-Regular.woff2") format("woff2"), url("../font/Fira Sans/FiraSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("../font/Fira Sans/FiraSans-Italic.woff2") format("woff2"), url("../font/Fira Sans/FiraSans-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("../font/Fira Sans/FiraSans-Bold.woff2") format("woff2"), url("../font/Fira Sans/FiraSans-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("../font/Fira Sans/FiraSans-BoldItalic.woff2") format("woff2"), url("../font/Fira Sans/FiraSans-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
