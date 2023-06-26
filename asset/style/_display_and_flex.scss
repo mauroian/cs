@@ -60,28 +60,25 @@
 .#{$class-prefix}inline-flex {
 	display: inline-flex !important;
 }
-$bp-names: get-list-of-keys-from-map($breakpoint-vals-and-containers-max-width);
-@each $bp-name in $bp-names {
-	$bp-value: get-value-from-map_list-by-key-and-index($breakpoint-vals-and-containers-max-width,
-		$bp-name,
-		1);
-	@media (min-width: $bp-value) {
-		.#{$class-prefix}none-#{$bp-name} {
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+	@media (min-width: $breakpoint-value) {
+		.#{$class-prefix}none-#{$breakpoint-name} {
 			display: none !important;
 		}
-		.#{$class-prefix}block-#{$bp-name} {
+		.#{$class-prefix}block-#{$breakpoint-name} {
 			display: block !important;
 		}
-		.#{$class-prefix}flex-#{$bp-name} {
+		.#{$class-prefix}flex-#{$breakpoint-name} {
 			display: flex !important;
 		}
-		.#{$class-prefix}inline-block-#{$bp-name} {
+		.#{$class-prefix}inline-block-#{$breakpoint-name} {
 			display: inline-block !important;
 		}
-		.#{$class-prefix}inline-#{$bp-name} {
+		.#{$class-prefix}inline-#{$breakpoint-name} {
 			display: inline !important;
 		}
-		.#{$class-prefix}inline-flex-#{$bp-name} {
+		.#{$class-prefix}inline-flex-#{$breakpoint-name} {
 			display: inline-flex !important;
 		}
 	}

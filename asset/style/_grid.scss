@@ -25,98 +25,55 @@
 @import "_variables";
 @import "_utilities";
 
-@mixin container-common-properties() {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
 
 // container classes:
-@mixin generate-all-container-classes($bkpts-cont-max-width) {
+@mixin generate-container-classes($breakpoints,$container-max-widths) {
 
 	@include newLine();
 	/* .#{$class-prefix}container-fluid class */
 	@include newLine();
 
 	.container-fluid {
-		@include container-common-properties();
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
-	$bp-names: get-list-of-keys-from-map($bkpts-cont-max-width);
-	$num-breakpoints: length($bp-names);
+	$breakpoint-names: get-list-of-keys-from-map($breakpoints);
+	$breakpoint-values: get-list-of-values-from-map($breakpoints);
+	$container-max-widths-values: get-list-of-values-from-map($container-max-widths);	
+	$num-breakpoints: length($breakpoint-names);
 
 	$i:0;
-
-	@each $bp-name in $bp-names {
+	@each $breakpoint-name in $breakpoint-names {
 
 		@include newLine();
-
-		/* .#{$class-prefix}container-#{$bp-name} class */
-			
+		/* .#{$class-prefix}container-#{$breakpoint-name} class */			
 		@include newLine();
 
-
-		.#{$class-prefix}container-#{$bp-name} {
-			@include container-common-properties();
+		.#{$class-prefix}container-#{$breakpoint-name} {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		$i: $i + 1;
-
 		@if $i == 1 {
 			.#{$class-prefix}container {
-				@extend .#{$class-prefix}container-#{$bp-name};
+				@extend .#{$class-prefix}container-#{$breakpoint-name};
 			}			  
 		}
 
 		@for $i-nested from $i through $num-breakpoints {
 
-			$bp-name-nested: get-value-from-list-by-index($bp-names,
-				$i-nested);
+			$breakpoint-name-nested: get-value-from-list-by-index($breakpoint-names, $i-nested);
+			$breakpoint-value-nested: get-value-from-list-by-index($breakpoint-values, $i-nested);
+			$container-max-width-value-nested: get-value-from-list-by-index($container-max-widths-values, $i-nested); 
 
-			$bp-value-nested: get-value-from-map_list-by-key-and-index($bkpts-cont-max-width,
-				$bp-name-nested,
-				1);
-
-			$bp-container-max-width-nested: get-value-from-map_list-by-key-and-index($bkpts-cont-max-width,
-				$bp-name-nested,
-				2);
-
-			@media (min-width: #{$bp-value-nested}) {
-				.#{$class-prefix}container-#{$bp-name} {
-					max-width: #{$bp-container-max-width-nested};
+			@media (min-width: #{$breakpoint-value-nested}) {
+				.#{$class-prefix}container-#{$breakpoint-name} {
+					max-width: #{$container-max-width-value-nested};
 				}
-			}
-		}
-	}
-}
-
-
-// col classes:
-@mixin generate-col-class($bp-name, $bp-value) {
-
-	@if $bp-name !="" {
-		$bp-name: "-"+$bp-name;
-	}
-
-	/* .#{$class-prefix}col#{$bp-name}, .#{$class-prefix}col#{$bp-name}-1...n classes */
-
-	@include newLine();
-
-	//col class | col<bp> class 
-	@media (min-width: $bp-value) {
-		.#{$class-prefix}col#{$bp-name} {
-			flex: 1 0 0%; /* columns next to each other and equal */
-			padding: 0px;
-		}
-	}
-
-	//col-1...n classes | col-<bp>-1...n classes 
-	@for $i from 1 through 12 {
-		.#{$class-prefix}col#{$bp-name}-#{$i} {
-			@media (min-width: $bp-value) {
-				width: calc(100% * (#{$i} / 12));
-				flex: 0 1 auto; /* flex back to its default value */
-				padding: 0px;
 			}
 		}
 	}
@@ -145,32 +102,67 @@
 	}
 }
 
-@mixin generate-all-col-classes($bkpts-cont-max-width) {
-	$bp-names: get-list-of-keys-from-map($bkpts-cont-max-width);
+@mixin generate-col-classes($breakpoints) {
 
-	//col, col-1...n
-	@include generate-col-class("", 0);
+	/* Note: to make columns stack onto each other, assign to each div a col-12 class (or col-sm-12... col-md-12- etc,) */
 
-	//col-<bp>, col-<bp>-1...n
-	@each $bp-name in $bp-names {
+	//col, col-1...n:
 
-		$bp-value: get-value-from-map_list-by-key-and-index($bkpts-cont-max-width,
-			$bp-name,
-			1);
+	/* .#{$class-prefix}col, .#{$class-prefix}col-1...n classes */
+	.#{$class-prefix}col {
+		flex: 1 0 0%; /* columns next to each other and equal */
+		padding: 0px;
+	}
 
-		@include generate-col-class($bp-name, $bp-value);
+	@for $i from 1 through 12 {
+		.#{$class-prefix}col-#{$i} {
+				width: calc(100% * (#{$i} / 12));
+				flex: 0 1 auto; /* flex back to its default value */
+				padding: 0px;
+		}
+	}
+
+	//col-<bp>, col-<bp>-1...n:
+	
+	@each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+		@if $breakpoint-name !="" {
+			$breakpoint-name: "-"+$breakpoint-name;
+		}
+	
+		/* .#{$class-prefix}col#{$breakpoint-name}, .#{$class-prefix}col#{$breakpoint-name}-1...n classes */
+	
+		@include newLine();
+	
+		//col class | col<bp> class 
+		@media (min-width: $breakpoint-value) {
+			.#{$class-prefix}col#{$breakpoint-name} {
+				flex: 1 0 0%; /* columns next to each other and equal */
+				padding: 0px;
+			}
+		}
+	
+		//col-1...n classes | col-<bp>-1...n classes 
+		@for $i from 1 through 12 {
+			.#{$class-prefix}col#{$breakpoint-name}-#{$i} {
+				@media (min-width: $breakpoint-value) {
+					width: calc(100% * (#{$i} / 12));
+					flex: 0 1 auto; /* flex back to its default value */
+					padding: 0px;
+				}
+			}
+		}
 	}
 }
 
-// generate all container classes
-@include generate-all-container-classes($breakpoint-vals-and-containers-max-width);
+// generate container classes
+@include generate-container-classes($breakpoints,$container-max-widths);
 
 // generate row classes
 @include generate-row-classes();
 
-// generate all col classes
-/* Note: to make columns stack onto each other, assign to each div a col-12 class (or col-sm-12... col-md-12- etc,) */
-@include generate-all-col-classes($breakpoint-vals-and-containers-max-width);
+// generate col classes
+@include generate-col-classes($breakpoints);
 
 
 /* Width classes */

@@ -1,11 +1,11 @@
-
+//
 //	_utilities.scss
 //	
 // 	Mauro Iannicelli (June '23)
 //
 //	Usage:		@import "_utilities";
 //
-//	Itcontains utility functions of generic use.
+//	It contains utility functions for generic use.
 
 @function convert-to-unit($val, $to-unit) {
 /// MI: converts between px and rem (and returns same input if input unit = $to-unit, as nothing to convert!)
@@ -43,18 +43,6 @@
 	@return $ret;
 }
 
-@function get-value-from-map_list-by-key-and-index($map_list, $key, $index) {
-///
-/// A map_list is something I created: it's a map whose values are two-element lists 
-/// $index can be 1 or 2 - to return the first or sercond value for the list corresponding to $key
-/// 
-	$values: map-get($map_list, $key);
-	$value: nth($values, $index);
-	$ret: $value;
-	@return $ret;
-}
-
-
 @mixin newLine() {
 /// Writes a line /**/ in the .css that later I can replace with an empty line
 	/**/
@@ -77,97 +65,57 @@
 	@return $rem-size;
 }
 
-
-@mixin generate-selector-for-property-fluid($selector, $prop, $p-min, $p-max, $vw-min, $vw-max) {
-/// Generates the responsive-fluid selector for a property 
-/// This is meant to be called from generate-all-selectors-for-property-fluid (rather than called directly, although this is possible)
-/// 
-/// MI: here I have implemented the fluid-responsive formula from https://websemantics.uk/tools/fluid-responsive-property-calculator/
-/// With the only change that I do everything in rem for accesibility's sake
-
-/// font-size  = calc(ZZ + ((1vw - XX) * YY))
-/// where:
-/// XX = min_viewport / 100
-/// YY = 100 * (max_font_size - min_font_size) / (max_viewport - min_viewport)
-/// ZZ = Minimum font-size
-
-	$selector: #{$class-prefix}#{$selector};
-
-	$p-min-rem: convert-to-unit($p-min,"rem");
-	$p-max-rem: convert-to-unit($p-max,"rem");
-	$vw-min-rem: convert-to-unit($vw-min,"rem");
-	$vw-max-rem: convert-to-unit($vw-max,"rem");
 	
-	$ZZ: $p-min-rem;
-	$XX: calc($vw-min-rem/100);
-	$YY: calc(100 * ($p-max-rem - $p-min-rem)/($vw-max-rem - $vw-min-rem));
-	$YY: decimal-round($YY, 4);
+@mixin generate-all-selectors-for-property-fluid($property, $prop-min-values, $prop-max-values,
+	$vw-min, $vw-max) {
+	/// Generates all the responsive-fluid selectors for a property
 
-	@include newLine;
+	/// MI: here I have implemented the fluid-responsive formula from https://websemantics.uk/tools/fluid-responsive-property-calculator/
+	/// With the only change that I do everything in rem for accesibility's sake
 
-	/* .#{$selector} */
-	.#{$selector} {
-		#{$prop}: 	#{$p-min-rem};
-	}
+	/// font-size  = calc(ZZ + ((1vw - XX) * YY))
+	/// where:
+	/// XX = min_viewport / 100
+	/// YY = 100 * (max_font_size - min_font_size) / (max_viewport - min_viewport)
+	/// ZZ = Minimum font-size 
 
-	@media (min-width: #{$vw-min-rem}) {   
-		.#{$selector} {
-			#{$prop}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY}));
-			min-height: 0vw;
+	$selectors: get-list-of-keys-from-map($prop-min-values);
+
+	@each $selector in $selectors {
+		
+		$prop-min-value: map-get($prop-min-values, $selector);	
+		$prop-max-value: map-get($prop-max-values, $selector);
+
+		$prop-min-value-rem: convert-to-unit($prop-min-value,"rem");
+		$prop-max-value-rem: convert-to-unit($prop-max-value,"rem");
+		$vw-min-rem: convert-to-unit($vw-min,"rem");
+		$vw-max-rem: convert-to-unit($vw-max,"rem");
+		
+		$ZZ: $prop-min-value-rem;
+		$XX: calc($vw-min-rem/100);
+		$YY: calc(100 * ($prop-max-value-rem - $prop-min-value-rem)/($vw-max-rem - $vw-min-rem));
+		$YY: decimal-round($YY, 4);
+	
+		@include newLine;
+	
+		/* .#{$class-prefix}#{$selector} */
+		.#{$class-prefix}#{$selector} {
+			#{$property}: 	#{$prop-min-value-rem};
 		}
-	}
-
-	@media (min-width: #{$vw-min-rem}) {   
-		.#{$selector} {
-			#{$prop}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY}));
-			min-height: 0vw;
+	
+		@media (min-width: #{$vw-min-rem}) {   
+			.#{$class-prefix}#{$selector} {
+				#{$property}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY}));
+				min-height: 0vw;
+			}
 		}
+	
+		@media (min-width: #{$vw-max-rem}) {
+			.#{$class-prefix}#{$selector} {
+				#{$property}: #{$prop-max-value-rem};
+			}
+		}	
 	}
-
-	@media (min-width: #{$vw-max-rem}) {
-		.#{$selector} {
-			#{$prop}: #{$p-max-rem};
-		}
-	}	
 }
 
 
-@mixin generate-all-selectors-for-property-fluid($property, $prop-min-max-values,
-	$min-vwport, $max-vwport) {
-///Generates the the list of all the responsive-fluid selectors for a property
-/// It's meant to be called directly to generate the selectors.
-/// 
-	$selectors: get-list-of-keys-from-map($prop-min-max-values);
-
-	@each $sel in $selectors {
-
-		$min-val: get-value-from-map_list-by-key-and-index($prop-min-max-values,
-			$sel,
-			1);
-
-		$max-val: get-value-from-map_list-by-key-and-index($prop-min-max-values,
-			$sel,
-			2);
-
-		@include generate-selector-for-property-fluid($sel, $property, $min-val, $max-val, $min-vwport, $max-vwport);
-	}
-}
-
-
-/// NOT USED FOR NOW - And not sure I'll ever use it.
-@mixin generate-all-selectors-for-property-from-map-max-val($property, $prop-min-max-values) {
-///Generates the  list of all the selectors for a property (The property will be non responsive. It gets the max value of the property from the $prop-min-max-values array).
-/// It's meant to be called directly to generate the selectors.   
-	$selectors: get-list-of-keys-from-map($prop-min-max-values);
-
-	@each $sel in $selectors {
-
-		$val: get-value-from-map_list-by-key-and-index($prop-min-max-values,
-			$sel,
-			2);
-
-            .#{$class-prefix}#{$sel} {
-                #{$property}: #{$val}px;
-            }   
-	}
-}

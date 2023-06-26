@@ -27,11 +27,12 @@
 
 /* Font size classes */
 
-//Generate classes fs-1....n which set the font-size with a responsive-fluid formula
+//Generates classes fs-1....n which set the font-size with a responsive-fluid formula
 @include generate-all-selectors-for-property-fluid("font-size",
-  $font-sizes-min-max,
-  $font-size-at-min-viweport,
-  $font-size-at-max-viweport);
+  $font-sizes-min,
+  $font-sizes-max,
+  $min-viweport-for-font-size,
+  $max-viweport-for-font-size);
 
 h1,
 .h1 {

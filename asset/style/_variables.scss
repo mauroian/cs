@@ -45,29 +45,47 @@ $border_radius: 5px;
 $btn_border_radius: 0px;
 
 //variables for typography
-$font-size-at-min-viweport:380px;
-$font-size-at-max-viweport:992px;
+$min-viweport-for-font-size:400px;
+$max-viweport-for-font-size:1024px;
 
-//A key/value MAP, where each value is a LIST with two elements
-$breakpoint-vals-and-containers-max-width:(
-	sm: 	(576px,		540px),
-	md: 	(768px, 	720px),
-	lg: 	(1024px, 	960px),
-	xl: 	(1280px,	1180px),
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
 );
 
-//A key/value MAP, where each value is a LIST with two elements
-$font-sizes-min-max:(
-	fs-small-3:(12px, 12px),
-	fs-small-2:(14px, 14px),
-	fs-small-1:(16px, 17px),
-	fs-1:(21px, 21px),
-	fs-2:(24px, 25px),
-	fs-3:(28px, 30px),
-	fs-4:(35px, 44px),
-	fs-5:(44px, 53px),
-	fs-6:(54px, 68px),
-	fs-7:(66px, 80px)
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1180px
+);
+
+$font-sizes-min:(
+	fs-small-3: 12px,
+	fs-small-2: 14px,
+	fs-small-1: 16px,
+	fs-1: 21px,
+	fs-2: 24px,
+	fs-3: 28px,
+	fs-4: 35px,
+	fs-5: 44px,
+	fs-6: 54px,
+	fs-7: 66px
+);
+
+$font-sizes-max:(
+	fs-small-3: 12px,
+	fs-small-2: 14px,
+	fs-small-1: 17px,
+	fs-1: 21px,
+	fs-2: 25px,
+	fs-3: 30px,
+	fs-4: 44px,
+	fs-5: 53px,
+	fs-6: 68px,
+	fs-7: 80px
 );
 
 $margins:( 
