@@ -17,55 +17,87 @@
 
 /* Margin classes */
 
-@mixin generate-margins($margins,$to-unit) {
+@include generate-all-selectors-for-tbsexy-property-fluid(
+	"margin",
+	"m",
+	$margins-min,
+	$margins-max,
+	$min-viweport-for-fluid-properties,
+	$max-viweport-for-fluid-properties,
+	$tbsexy);
 
-	@each $type in $tbsexy {
-		@each $sel-suffix, $value in $margins {
-			.#{$class-prefix}m#{$type}-#{$sel-suffix} {
 
-				@if $type == "t" {
-					margin-top: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "b" {
-					margin-bottom: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "s" {
-					margin-left: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "e" {
-					margin-right: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "x" {
-					margin-left: convert-to-unit($value,$to-unit) !important;
-					margin-right: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "y" {
-					margin-top: convert-to-unit($value,$to-unit) !important;
-					margin-bottom: convert-to-unit($value,$to-unit) !important;
-				} @else {
-					margin: convert-to-unit($value,$to-unit) !important;
-				}			
+
+	
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+		@mixin generate-margins($margins, $to-unit) {
+
+			@each $type in $tbsexy {
+
+				@each $sel-suffix,
+				$value in $margins {
+					.#{$class-prefix}m#{$type}-#{$sel-suffix} {
+
+						@if $type =="t" {
+							margin-top: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else if $type =="b" {
+							margin-bottom: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else if $type =="s" {
+							margin-left: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else if $type =="e" {
+							margin-right: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else if $type =="x" {
+							margin-left: convert-to-unit($value, $to-unit) !important;
+							margin-right: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else if $type =="y" {
+							margin-top: convert-to-unit($value, $to-unit) !important;
+							margin-bottom: convert-to-unit($value, $to-unit) !important;
+						}
+
+						@else {
+							margin: convert-to-unit($value, $to-unit) !important;
+						}
+					}
+				}
+			}
+
+			@each $type in $tbsexy {
+				.#{$class-prefix}p#{$type}-auto {
+					@if $type == "t" {
+						margin-top: auto !important;
+					} @else if $type == "b" {
+						margin-bottom: auto !important;
+					} @else if $type == "s" {
+						margin-left: auto !important;
+					} @else if $type == "e" {
+						margin-right: auto !important;
+					} @else if $type == "x" {
+						margin-left: auto !important;
+						margin-right: auto !important;
+					} @else if $type == "y" {
+						margin-top: auto !important;
+						margin-bottom: auto !important;
+					} @else {
+						margin: auto !important;
+					}
+				}
 			}
 		}
-	}
 
-	@each $type in $tbsexy {
-		.#{$class-prefix}m#{$type}-auto {
-			@if $type == "t" {
-				margin-top: auto !important;
-			} @else if $type == "b" {
-				margin-bottom: auto !important;
-			} @else if $type == "s" {
-				margin-left: auto !important;
-			} @else if $type == "e" {
-				margin-right: auto !important;
-			} @else if $type == "x" {
-				margin-left: auto !important;
-				margin-right: auto !important;
-			} @else if $type == "y" {
-				margin-top: auto !important;
-				margin-bottom: auto !important;
-			} @else {
-				margin: auto !important;
-			}
-		}
-	}
-}
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+		//@include generate-margins($margins, "rem");
 
-@include generate-margins($margins, "rem");
+
+
+	
 

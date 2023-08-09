@@ -3,12 +3,11 @@ $class-prefix: cs-;  //class prefix for this 'proprietary' framework
 $white: #ffffff;
 $lightgray: #d8d8d8;
 $gray: #b1b1b1;
-$darkgray: #666666;
+$darkgray: #414141;
 $black: #2c2c2c;
-$yellow: #ecc10a;
 $mediumyellow: darken(#ffec9a, 10);
 $lightyellow: #ffec9a;
-$orange: #f1a201;
+$orange: #ecc10a;
 $lightorange: #fecf4e;
 $red: #f33f00;
 $darkred: #b40000;
@@ -24,7 +23,6 @@ $colors: (
 	"gray": $gray,
 	"darkgray": $darkgray,
 	"black": $black,
-	"yellow": $yellow,
 	"mediumyellow": $mediumyellow,
 	"lightyellow": $lightyellow,
 	"orange": $orange,
@@ -45,8 +43,8 @@ $border_radius: 5px;
 $btn_border_radius: 0px;
 
 //variables for typography
-$min-viweport-for-font-size:400px;
-$max-viweport-for-font-size:1024px;
+$min-viweport-for-fluid-properties:400px;
+$max-viweport-for-fluid-properties:1024px;
 
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
@@ -77,7 +75,10 @@ $font-sizes-min:(
 	fs-4: 35px,
 	fs-5: 44px,
 	fs-6: 54px,
-	fs-7: 66px
+	fs-7: 66px,
+	fs-bt-5: 15px,
+	fs-bt-6: 18px,
+	fs-bt-7: 25px
 );
 
 $font-sizes-max:(
@@ -90,10 +91,27 @@ $font-sizes-max:(
 	fs-4: 44px,
 	fs-5: 53px,
 	fs-6: 68px,
-	fs-7: 80px
+	fs-7: 80px,
+	fs-bt-5: 35px,
+	fs-bt-6: 45px,
+	fs-bt-7: 55px
 );
 
-$margins:( 
+$margins-min:( 
+	"0":	0px,
+	"1":	2px,
+	"2":	4px,
+	"3":	6px, 
+	"4":	8px,
+	"5": 	12px,
+	"6":	16px,
+	"7":	22px,
+	"8": 	28px,
+	"9":	36px,
+	"10":	44px
+);
+
+$margins-max:( 
 	"0":	0px,
 	"1":	4px,
 	"2":	8px,
@@ -107,6 +125,79 @@ $margins:(
 	"10":	88px
 );
 
+$paddings-min:( 
+	"0":	0px,
+	"1":	2px,
+	"2":	4px,
+	"3":	6px, 
+	"4":	8px,
+	"5": 	12px,
+	"6":	16px,
+	"7":	22px,
+	"8": 	28px,
+	"9":	36px,
+	"10":	44px
+);
+
+$paddings-max:( 
+	"0":	0px,
+	"1":	4px,
+	"2":	8px,
+	"3":	12px, 
+	"4":	16px,
+	"5": 	24px,
+	"6":	32px,
+	"7":	44px,
+	"8": 	56px,
+	"9":	72px,
+	"10":	88px
+);
+
+$yspacers-min:( 
+	"yspacer-0": 0px,
+	"yspacer-1": 2.5px,
+	"yspacer-2": 5px,
+	"yspacer-3": 7.7px,
+	"yspacer-4": 12.5px,
+	"yspacer-5": 20px,
+	"yspacer-6": 27.5px,
+	"yspacer-7": 40px,
+	"yspacer-8": 60px,
+	"yspacer-9": 80px,
+	"yspacer-10": 100px		
+);
+
+$yspacers-max:( 
+	"yspacer-0": 0px,
+	"yspacer-1": 5px,
+	"yspacer-2": 10px,
+	"yspacer-3": 15px,
+	"yspacer-4": 25px,
+	"yspacer-5": 40px,
+	"yspacer-6": 55px,
+	"yspacer-7": 80px,
+	"yspacer-8": 120px,
+	"yspacer-9": 160px,
+	"yspacer-10": 200px		
+);
+
+
+//NOT USED ANY LONGER (this was used to generate non fluid/responsive values)
+	$margins:( 
+		"0":	0px,
+		"1":	4px,
+		"2":	8px,
+		"3":	12px, 
+		"4":	16px,
+		"5": 	24px,
+		"6":	32px,
+		"7":	44px,
+		"8": 	56px,
+		"9":	72px,
+		"10":	88px
+	);
+
+//NOT USED ANY LONGER (this was used to generate non fluid/responsive values)
 $paddings:( 
 	"0":	0px,
 	"1":	4px,
@@ -121,7 +212,8 @@ $paddings:(
 	"10":	88px
 );
 
-$spacers-y:( 
+//NOT USED ANY LONGER (this was used to generate non fluid/responsive values)
+$yspacers:( 
 	"1": 5px,
 	"2": 10px,
 	"3": 15px,

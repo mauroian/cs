@@ -1,0 +1,30 @@
+//
+//	colors.scss	
+//
+// 	Christian Carestia (June '23)
+//
+//	Usage:		@import "_colors";
+//
+//	It generates colors and background classes (to be assigned to DIVs) such as:
+//
+//	.cs-color-white .cs-bg-white
+//
+
+@import "_variables";
+
+/* Colors classes */
+
+@mixin generate-colors($colors) {
+  @each $name, $color in $colors {
+    .#{$class-prefix}color-#{$name} {
+      color: #{$color} !important;
+    }
+  
+    .#{$class-prefix}bg-#{$name} {
+      background-color: #{$color};
+    }
+  }
+}
+
+@include generate-colors($colors);
+

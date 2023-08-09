@@ -17,55 +17,69 @@
 
 /* Padding classes */
 
-@mixin generate-paddings($paddings,$to-unit) {
+@include generate-all-selectors-for-tbsexy-property-fluid(
+	"padding",
+	"p",
+	$paddings-min,
+	$paddings-max,
+	$min-viweport-for-fluid-properties,
+	$max-viweport-for-fluid-properties,
+	$tbsexy);
 
-	@each $type in $tbsexy {
-		@each $sel-suffix, $value in $paddings {
-			.#{$class-prefix}p#{$type}-#{$sel-suffix} {
 
-				@if $type == "t" {
-					padding-top: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "b" {
-					padding-bottom: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "s" {
-					padding-left: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "e" {
-					padding-right: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "x" {
-					padding-left: convert-to-unit($value,$to-unit) !important;
-					padding-right: convert-to-unit($value,$to-unit) !important;
-				} @else if $type == "y" {
-					padding-top: convert-to-unit($value,$to-unit) !important;
-					padding-bottom: convert-to-unit($value,$to-unit) !important;
-				} @else {
-					padding: convert-to-unit($value,$to-unit) !important;
-				}			
+
+
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+		@mixin generate-paddings($paddings,$to-unit) {
+
+			@each $type in $tbsexy {
+				@each $sel-suffix, $value in $paddings {
+					.#{$class-prefix}p#{$type}-#{$sel-suffix} {
+
+						@if $type == "t" {
+							padding-top: convert-to-unit($value,$to-unit) !important;
+						} @else if $type == "b" {
+							padding-bottom: convert-to-unit($value,$to-unit) !important;
+						} @else if $type == "s" {
+							padding-left: convert-to-unit($value,$to-unit) !important;
+						} @else if $type == "e" {
+							padding-right: convert-to-unit($value,$to-unit) !important;
+						} @else if $type == "x" {
+							padding-left: convert-to-unit($value,$to-unit) !important;
+							padding-right: convert-to-unit($value,$to-unit) !important;
+						} @else if $type == "y" {
+							padding-top: convert-to-unit($value,$to-unit) !important;
+							padding-bottom: convert-to-unit($value,$to-unit) !important;
+						} @else {
+							padding: convert-to-unit($value,$to-unit) !important;
+						}			
+					}
+				}
+			}
+
+			@each $type in $tbsexy {
+				.#{$class-prefix}p#{$type}-auto {
+					@if $type == "t" {
+						padding-top: auto !important;
+					} @else if $type == "b" {
+						padding-bottom: auto !important;
+					} @else if $type == "s" {
+						padding-left: auto !important;
+					} @else if $type == "e" {
+						padding-right: auto !important;
+					} @else if $type == "x" {
+						padding-left: auto !important;
+						padding-right: auto !important;
+					} @else if $type == "y" {
+						padding-top: auto !important;
+						padding-bottom: auto !important;
+					} @else {
+						padding: auto !important;
+					}
+				}
 			}
 		}
-	}
 
-	@each $type in $tbsexy {
-		.#{$class-prefix}p#{$type}-auto {
-			@if $type == "t" {
-				padding-top: auto !important;
-			} @else if $type == "b" {
-				padding-bottom: auto !important;
-			} @else if $type == "s" {
-				padding-left: auto !important;
-			} @else if $type == "e" {
-				padding-right: auto !important;
-			} @else if $type == "x" {
-				padding-left: auto !important;
-				padding-right: auto !important;
-			} @else if $type == "y" {
-				padding-top: auto !important;
-				padding-bottom: auto !important;
-			} @else {
-				padding: auto !important;
-			}
-		}
-	}
-}
-
-@include generate-paddings($paddings, "rem");
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+		//@include generate-paddings($paddings, "rem");
 

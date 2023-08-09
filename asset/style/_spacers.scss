@@ -7,49 +7,34 @@
 //
 //	It generates vertical spacer classes (to be assigned to DIVs) such as:
 //
-//	.cs-spacer-y-1 ... .cs-spacer-y-8
+//	.cs-yspacer-1 ... .cs-yspacer-8
 //
 
 @import "_variables";
 @import "_utilities";
 
-
-/// ############################# vertical spacers #############################
-
-        // NOT USED FOR NOW
-        // $spacers-y-min-max:( 
-        // 	spacer-y-1:(5, 5),
-        // 	spacer-y-2:(10, 10),
-        // 	spacer-y-3:(15, 15),
-        // 	spacer-y-4:(25, 25),
-        // 	spacer-y-5:(40, 40),
-        // 	spacer-y-6:(55, 55),
-        // 	spacer-y-7:(80, 80),
-        // 	spacer-y-8:(120, 120)	
-        // );
-        // 
-        // 
-        // Use this, if I want responsive-fluid properties from $spacers-y-min-max
-        //
-        // @include generate-all-selectors-for-property-fluid(
-        //     "height",
-        //     $spacers-y-min-max,  
-        //     $font-size-at-min-viweport,
-        //     $font-size-at-max-viweport);
-
-        //use this, if I want fixed value property from the max val of $spacers-y-min-max
-        // @include generate-all-selectors-for-property-from-map-max-val("height", $spacers-y-min-max);
+/* 'Spacer' classes */
+        
+//Generates classes yspacer-1....n which set the height (to be assigned to a DIV) with a responsive-fluid formula
+@include generate-all-selectors-for-property-fluid("height",
+  $yspacers-min,
+  $yspacers-max,
+  $min-viweport-for-fluid-properties,
+  $max-viweport-for-fluid-properties);
 
 
-@mixin generate-spacers($spacers-y,$to-unit) {
-    @each $sel-suffix, $value in $spacers-y {
-        .#{$class-prefix}spacer-y-#{$sel-suffix} {
-            height: convert-to-unit($value,$to-unit) !important;
+
+
+
+
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+        @mixin generate-spacers($spacers-y,$to-unit) {
+            @each $sel-suffix, $value in $spacers-y {
+                .#{$class-prefix}spacer-y-#{$sel-suffix} {
+                    height: convert-to-unit($value,$to-unit) !important;
+                }
+            }
         }
-    }
-}
 
-// Generate:
-
-
-@include generate-spacers($spacers-y, "rem");
+//NOT USED ANY LONGER (this generates non fluid/responsive values)
+        //@include generate-spacers($spacers-y, "rem");

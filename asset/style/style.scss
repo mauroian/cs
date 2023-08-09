@@ -17,6 +17,13 @@
 @import "_variables";
 @import "_utilities";
 
+@import "_colors";
+//
+//	It generates color classes like the ones below.
+//
+//  cs-color-white
+//  cs-bg-white
+
 @import "_typography";
 	//	It generates font size classes such as:
 	//
@@ -105,7 +112,7 @@
 @import "_spacers";
 	//	It generates vertical spacer classes (to be assigned to DIVs) such as:
 	//
-	//	.cs-spacer-y-1 ... .cs-spacer-y-8
+	//	.cs-yspacer-1 ... .cs-yspacer-8
 	//
 
 
@@ -117,16 +124,16 @@
 // cs-text-justify 
 //
 .#{$class-prefix}text-center {
-	text-align: center;
+	text-align: center !important;
 }
 .#{$class-prefix}text-left {
-	text-align: left;
+	text-align: left !important;
 }
 .#{$class-prefix}text-right {
-	text-align: right;
+	text-align: right !important;
 }
 .#{$class-prefix}text-justify {
-	text-align: justify;
+	text-align: justify !important;
 }
 
 

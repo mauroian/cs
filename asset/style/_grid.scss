@@ -33,10 +33,12 @@
 	/* .#{$class-prefix}container-fluid class */
 	@include newLine();
 
-	.container-fluid {
+	.#{$class-prefix}container-fluid {
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: 3vw;
+		padding-right: 3vw;
 	}
 
 	$breakpoint-names: get-list-of-keys-from-map($breakpoints);
@@ -55,6 +57,8 @@
 			width: 100%;
 			margin-left: auto;
 			margin-right: auto;
+			padding-left: 3vw;
+			padding-right: 3vw;
 		}
 
 		$i: $i + 1;
@@ -73,6 +77,8 @@
 			@media (min-width: #{$breakpoint-value-nested}) {
 				.#{$class-prefix}container-#{$breakpoint-name} {
 					max-width: #{$container-max-width-value-nested};
+					padding-left:0;
+					padding-right: 0; 
 				}
 			}
 		}

@@ -8,23 +8,29 @@
 //	It contains utility functions for generic use.
 
 @function convert-to-unit($val, $to-unit) {
-/// MI: converts between px and rem (and returns same input if input unit = $to-unit, as nothing to convert!)
-/// 
-/// input: eg.:
-/// $val:"5px";   or   $val:"2rem";
-/// $to-unit:"px"    or   $to-unit:"rem"
-/// 
-/// output: eg.:
-/// "20px"   or   "1.2rem"
-/// 
+	/// MI: converts between px and rem (and returns same input if input unit = $to-unit, as nothing to convert!)
+	/// 
+	/// input: eg.:
+	/// $val:"5px";   or   $val:"2rem";
+	/// $to-unit:"px"    or   $to-unit:"rem"
+	/// 
+	/// output: eg.:
+	/// "20px"   or   "1.2rem"
+	/// 
 	$ret: 0;
-	@if unit($val) == $to-unit {
+
+	@if unit($val)==$to-unit {
 		$ret: $val;
-	} @else if $to-unit == "px" {
+	}
+
+	@else if $to-unit =="px" {
 		$ret: calc((($val/1rem)*16)*1px);
-	} @else if $to-unit == "rem" {
+	}
+
+	@else if $to-unit =="rem" {
 		$ret: calc((($val/1px)/16)*1rem);
 	}
+
 	@return $ret;
 }
 
@@ -44,12 +50,12 @@
 }
 
 @mixin newLine() {
-/// Writes a line /**/ in the .css that later I can replace with an empty line
+	/// Writes a line /**/ in the .css that later I can replace with an empty line
 	/**/
 }
 
 @function decimal-round ($number, $digits) {
-/// Rounds a number to n decimal digits (found online)
+	/// Rounds a number to n decimal digits (found online)
 	$n: 1;
 
 	@for $i from 1 through $digits {
@@ -60,12 +66,12 @@
 }
 
 @function px-to-rem($size) {
-/// Convert pixels to rems
+	/// Convert pixels to rems
 	$rem-size: calc($size / 16);
 	@return $rem-size;
 }
 
-	
+//Used to generate all the fluid-responsive font-size properties
 @mixin generate-all-selectors-for-property-fluid($property, $prop-min-values, $prop-max-values,
 	$vw-min, $vw-max) {
 	/// Generates all the responsive-fluid selectors for a property
@@ -82,40 +88,174 @@
 	$selectors: get-list-of-keys-from-map($prop-min-values);
 
 	@each $selector in $selectors {
-		
-		$prop-min-value: map-get($prop-min-values, $selector);	
+
+		$prop-min-value: map-get($prop-min-values, $selector);
 		$prop-max-value: map-get($prop-max-values, $selector);
 
-		$prop-min-value-rem: convert-to-unit($prop-min-value,"rem");
-		$prop-max-value-rem: convert-to-unit($prop-max-value,"rem");
-		$vw-min-rem: convert-to-unit($vw-min,"rem");
-		$vw-max-rem: convert-to-unit($vw-max,"rem");
-		
+		$prop-min-value-rem: convert-to-unit($prop-min-value, "rem");
+		$prop-max-value-rem: convert-to-unit($prop-max-value, "rem");
+		$vw-min-rem: convert-to-unit($vw-min, "rem");
+		$vw-max-rem: convert-to-unit($vw-max, "rem");
+
 		$ZZ: $prop-min-value-rem;
 		$XX: calc($vw-min-rem/100);
 		$YY: calc(100 * ($prop-max-value-rem - $prop-min-value-rem)/($vw-max-rem - $vw-min-rem));
 		$YY: decimal-round($YY, 4);
-	
+
 		@include newLine;
-	
+
 		/* .#{$class-prefix}#{$selector} */
 		.#{$class-prefix}#{$selector} {
-			#{$property}: 	#{$prop-min-value-rem};
+			#{$property}: #{$prop-min-value-rem} !important;
 		}
-	
-		@media (min-width: #{$vw-min-rem}) {   
+
+		@media (min-width: #{$vw-min-rem}) {
 			.#{$class-prefix}#{$selector} {
-				#{$property}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY}));
+				#{$property}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY})) !important;
 				min-height: 0vw;
 			}
 		}
-	
+
 		@media (min-width: #{$vw-max-rem}) {
 			.#{$class-prefix}#{$selector} {
-				#{$property}: #{$prop-max-value-rem};
+				#{$property}: #{$prop-max-value-rem} !important;
 			}
-		}	
+		}
 	}
 }
 
+//Used to generate all the fluid-responsive margin and padding properties
+@mixin generate-all-selectors-for-tbsexy-property-fluid($property-basename, $property-initial, $prop-min-values, $prop-max-values,$vw-min, $vw-max, $tbsexy) {
 
+	//Part 1: generate all the numerical settings of the various properties (the 'auto' settings will be generated below in part 2)
+	@each $type in $tbsexy {
+
+		$selectors: get-list-of-keys-from-map($prop-min-values);  
+
+		@each $selector in $selectors {
+
+			//here $selector will be "0", "1" ecc. (it will be completed below)
+
+			$prop-min-value: map-get($prop-min-values, $selector);
+			$prop-max-value: map-get($prop-max-values, $selector);
+
+			$prop-min-value-rem: convert-to-unit($prop-min-value, "rem");
+			$prop-max-value-rem: convert-to-unit($prop-max-value, "rem");
+			$vw-min-rem: convert-to-unit($vw-min, "rem");
+			$vw-max-rem: convert-to-unit($vw-max, "rem");
+			$ZZ: $prop-min-value-rem;
+			$XX: calc($vw-min-rem/100);
+			$YY: calc(100 * ($prop-max-value-rem - $prop-min-value-rem)/($vw-max-rem - $vw-min-rem));
+			$YY: decimal-round($YY, 4);
+
+			@include newLine;
+
+			//completing $selector (to, eg: mt-4)
+			$selector: $property-initial+$type+"-"+$selector; 
+
+			$property1: "";
+			$property2: "";  //set for mx or my. Otherwise will be left ""
+
+			@if $type =="" {
+				$property1: $property-basename;
+			}
+			@else if $type =="t" {
+				$property1: $property-basename+"-top";
+			}
+			@else if $type =="b" {
+				$property1: $property-basename+"-bottom";
+			}
+			@else if $type =="s" {
+				$property1: $property-basename+"-left";
+			}
+			@else if $type =="e" {
+				$property1: $property-basename+"-right";
+			}
+			@else if $type =="x" {
+				$property1: $property-basename+"-left";
+				$property2: $property-basename+"-right";
+			}
+			@else if $type =="y" {
+				$property1: $property-basename+"-top";
+				$property2: $property-basename+"-bottom";
+			}
+
+			//The CSS code is written:
+
+			@if $property2=="" {
+				/* .#{$class-prefix}#{$selector} */
+				.#{$class-prefix}#{$selector} {
+					#{$property1}: #{$prop-min-value-rem} !important;
+				}
+
+				@media (min-width: #{$vw-min-rem}) {
+					.#{$class-prefix}#{$selector} {
+						#{$property1}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY})) !important;
+					}
+				}
+
+				@media (min-width: #{$vw-max-rem}) {
+					.#{$class-prefix}#{$selector} {
+						#{$property1}: #{$prop-max-value-rem} !important;
+					}
+				}
+			}
+			@else {
+				/* .#{$class-prefix}#{$selector} */
+				.#{$class-prefix}#{$selector} {
+					#{$property1}: #{$prop-min-value-rem} !important;
+					#{$property2}: #{$prop-min-value-rem} !important;
+				}
+
+				@media (min-width: #{$vw-min-rem}) {
+					.#{$class-prefix}#{$selector} {
+						#{$property1}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY})) !important;
+						#{$property2}: calc(#{$ZZ} + ((1vw - #{$XX}) * #{$YY})) !important;
+					}
+				}
+
+				@media (min-width: #{$vw-max-rem}) {
+					.#{$class-prefix}#{$selector} {
+						#{$property1}: #{$prop-max-value-rem} !important;
+						#{$property2}: #{$prop-max-value-rem} !important;
+					}
+				}
+			}
+		}
+	}
+
+	//Part 2: generate all the 'auto' settings of the various properties
+	@each $type in $tbsexy {
+		.#{$class-prefix}#{$property-initial}#{$type}-auto {
+			@if $type =="t" {
+				#{$property-basename}-top: auto !important;
+			}
+	
+			@else if $type =="b" {
+				#{$property-basename}-bottom: auto !important;
+			}
+	
+			@else if $type =="s" {
+				#{$property-basename}-left: auto !important;
+			}
+	
+			@else if $type =="e" {
+				#{$property-basename}-right: auto !important;
+			}
+	
+			@else if $type =="x" {
+				#{$property-basename}-left: auto !important;
+				#{$property-basename}-right: auto !important;
+			}
+	
+			@else if $type =="y" {
+				#{$property-basename}-top: auto !important;
+				#{$property-basename}-bottom: auto !important;
+			}
+	
+			@else {
+				#{$property-basename}: auto !important;
+			}
+		}
+	}
+}
